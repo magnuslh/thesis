@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "core-js": "^3.6.4",
+    "osc": "^2.4.0",
+    "phaser": "^3.22.0",
     "vue": "^2.6.11"
   },
   "devDependencies": {
