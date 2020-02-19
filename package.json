@@ -11,7 +11,9 @@
     "core-js": "^3.6.4",
     "osc": "^2.4.0",
     "phaser": "^3.22.0",
-    "vue": "^2.6.11"
+    "tone": "^13.8.25",
+    "vue": "^2.6.11",
+    "webmidi": "^2.5.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.2.0",
@@ -34,7 +36,9 @@
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {}
+    "rules": {
+      "require-jsdoc": 0
+    }
   },
   "browserslist": [
     "> 1%",

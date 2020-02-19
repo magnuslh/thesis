@@ -8,9 +8,9 @@ try {
     oscPort.open();
 
     
-oscPort.on("message", function (oscMsg) {
-    console.log("An OSC message just arrived!", oscMsg);
-});
+    oscPort.on("message", function (oscMsg) {
+        console.log("An OSC message just arrived!", oscMsg);
+    });
 }
 catch(err){
     console.log(err.message)

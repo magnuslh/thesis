@@ -2,18 +2,21 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
     <Game msg="Welcome to Your Vue.js App"/>
+    <Midi/>
   </div>
 </template>
 
 <script>
-import Game from './components/Game.vue'
+import Game from './components/Game.vue';
+import Midi from './components/Midi.vue'
 
 export default {
   name: 'App',
   components: {
-    Game
-  }
-}
+    Game,
+    Midi
+  },
+};
 </script>
 
 <style>
