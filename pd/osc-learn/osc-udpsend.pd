@@ -1,4 +1,4 @@
-#N canvas 434 291 882 458 10;
+#N canvas 97 516 882 458 10;
 #X declare -lib mrpeach;
 #X msg 204 139 disconnect;
 #X floatatom 269 185 5 0 0 0 - - -;
@@ -9,9 +9,21 @@
 #X obj 335 126 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 230 346 udpsend;
+#X obj 486 346 sendOSC 9001;
+#X floatatom 471 238 5 0 0 0 - - -;
+#X obj 484 189 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 462 291 send /test \$1;
+#X msg 648 244 disconnect;
+#X msg 587 191 connect localhost 9001;
 #X connect 0 0 7 0;
 #X connect 1 0 2 0;
 #X connect 2 0 4 0;
 #X connect 4 0 7 0;
 #X connect 5 0 7 0;
 #X connect 6 0 1 0;
+#X connect 9 0 11 0;
+#X connect 10 0 9 0;
+#X connect 11 0 8 0;
+#X connect 12 0 8 0;
+#X connect 13 0 8 0;
