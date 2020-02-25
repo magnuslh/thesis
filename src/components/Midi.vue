@@ -1,22 +1,55 @@
 <template>
-  <button  @click="handleClick">
-      start
+	<div>
+		Main Oscillator:
+		<Oscillator id="oscMain" @param="changeSynthParams" :params="synthParams"/>
+		Modulator: 
+		<Oscillator id="oscMod" @param="changeSynthParams" :params="synthParams"/>
+		<button  @click="handleClick">
+      test
     </button>
+	</div>
 </template>
 <script>
 
 
 
-import { Synth } from "tone";
+import { FMSynth } from "tone";
+import Oscillator from './Oscillator'
 
 import WebMidi from 'webmidi'
 
 export default {
-  name: 'Midi',
+	name: 'Midi',
+	components: {
+		Oscillator,
+	},
   data() {
     return {
-      ready: true
-      
+			ready: true,
+			synth: null,
+			synthParams: {
+				harmonicity : 3,
+				modulationIndex : 10,
+				detune : 0,
+				oscillator : {
+					type : 'sine'
+				} ,
+				envelope : {
+					attack : 0.01 ,
+					decay : 0.2 ,
+					sustain : 0.6 ,
+					release : 0.5
+				} ,
+				modulation : {
+					type : "sine"
+				} ,
+				modulationEnvelope : {
+					attack : 0.1 ,
+					decay : 0 ,
+					sustain : 0.1 ,
+					release : 0.1
+				}
+      }
     };
   },
   mounted() {
@@ -25,35 +58,32 @@ export default {
     // this.downloaded = true;
     
     // console.log(midi)
-    WebMidi.enable(function (err) {
+    WebMidi.enable( (err) => {
       
       if (err) {
         console.log("WebMidi could not be enabled.", err);
       }
 
-      const synth = new Synth({
-        "oscillator" : {
-          "type" : "amtriangle",
-          "harmonicity" : 0.5,
-          "modulationType" : "sine"
-        },
-        "envelope" : {
-          "attackCurve" : "exponential",
-          "attack" : 0.05,
-          "decay" : 0.2,
-          "sustain" : 0.2,
-          "release" : 1.5,
-        }
-      }).toMaster();
+      const synth = new FMSynth(this.synthParams).toMaster();
+
+			this.synth = synth;
 
       console.log(WebMidi.inputs)
-      const input = WebMidi.inputs[0];
-
-      input.addListener('noteon', "all", (e) => {
+      const input = WebMidi.inputs.find(i => i.name == "loopMIDI");
+			if(input){
+				console.log("Connected to input: " + input.name)
+				input.addListener('noteon', "all", (e) => {
           console.log("Received 'noteon' message (" + e.note.name + e.note.octave + ").");
-          synth.triggerAttackRelease(e.note.name + e.note.octave, "8n");
-        }
-      );
+          synth.triggerAttack(e.note.name + e.note.octave);
+				});
+				input.addListener('noteoff', "all", (e) => {
+          console.log("NoteOff" + e.note);
+          synth.triggerRelease();
+				});
+			}else{
+				console.log("No input found. Remember to start the loopMIDI bus")
+			}
+  
     })
 
 
@@ -61,7 +91,11 @@ export default {
   methods: {
     handleClick() {
       this.synth.triggerAttackRelease("C4", "8n");
-    }
+		},
+		changeSynthParams(param, value){
+			console.log("received synth param change " + param + " " + value)
+			this.synth.set(param, value)
+		}
   }
  
 };

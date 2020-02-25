@@ -1,0 +1,21 @@
+#N canvas 65 102 432 259 10;
+#X obj 52 79 unpacker s s f s f s;
+#X symbolatom 52 214 10 0 0 0 - - -;
+#X symbolatom 75 194 10 0 0 0 - - -;
+#X floatatom 98 174 5 0 0 0 - - -;
+#X symbolatom 122 154 10 0 0 0 - - -;
+#X floatatom 145 134 5 0 0 0 - - -;
+#X symbolatom 169 114 10 0 0 0 - - -;
+#X text 290 26 for WebPd....... \; using only \; [trigger] [spigot]
+\; and [pack];
+#X msg 52 31 list what a 78 beautiful 0 day;
+#X text 349 219 whale-av;
+#X text 248 80 6 args \; If you need more \, or less \; the [unpacker]
+abstraction \; will have to be edited.;
+#X connect 0 0 1 0;
+#X connect 0 1 2 0;
+#X connect 0 2 3 0;
+#X connect 0 3 4 0;
+#X connect 0 4 5 0;
+#X connect 0 5 6 0;
+#X connect 8 0 0 0;

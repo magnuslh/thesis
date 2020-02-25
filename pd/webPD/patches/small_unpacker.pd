@@ -1,0 +1,28 @@
+#N canvas 271 542 1723 274 10;
+#X obj 43 71 t a b;
+#X obj 70 102 s reset;
+#X text 220 73 If it does not work then \; always start the list with
+\; a float \, and then drop it.;
+#X text 217 18 but as there is no list object \; does webPd interpret
+as a "list" \; a message starting with a symbol?;
+#X obj 43 180 unpa \$1;
+#X obj 123 180 unpa \$2;
+#X obj 203 180 unpa \$3;
+#X obj 283 180 unpa \$4;
+#X obj 43 220 outlet;
+#X obj 123 220 outlet;
+#X obj 203 220 outlet;
+#X obj 283 220 outlet;
+#X obj 43 31 inlet;
+#X msg 43 132 \$1 \, \$2 \, \$3 \, \$4;
+#X connect 0 0 13 0;
+#X connect 0 1 1 0;
+#X connect 4 0 8 0;
+#X connect 4 1 5 0;
+#X connect 5 0 9 0;
+#X connect 5 1 6 0;
+#X connect 6 0 10 0;
+#X connect 6 1 7 0;
+#X connect 7 0 11 0;
+#X connect 12 0 0 0;
+#X connect 13 0 4 0;

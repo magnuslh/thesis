@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+		<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <script src="jquery-3.4.1.min.js"></script>
+    <script src="webpd-latest.min.js"></script>
+    <script>
+				console.log("hello")
+        var patch
+        $.get('patches/pDMweb.pd', function(mainStr) {
+					$.get('patches/pluss.pd', function(plussStr) {
+						Pd.registerAbstraction('pluss', plussStr)
+						$.get('patches/unpa.pd', function(unpaStr) {
+							Pd.registerAbstraction('unpa', plussStr)
+							$.get('patches/unpacker.pd', function(unpaStr) {
+								Pd.registerAbstraction('unpacker', plussStr)
+								// Loading the patch and abstraction
+								
+								patch = Pd.loadPatch(mainStr)
+								Pd.send(patch.patchId + '-diameter', [20])
+
+								Pd.start
+							})
+							// Loading the patch and abstraction
+						})
+					})
+
+        })
+    </script>
+  </head>
+
+  <body>
+		hello
+
+	</body>
+</html>
