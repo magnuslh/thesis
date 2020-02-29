@@ -1,19 +1,19 @@
 <template>
   <div id="app">
     <Game msg="Welcome to Your Vue.js App"/>
-    <Midi/>
+    <Synth/>
   </div>
 </template>
 
 <script>
 import Game from './components/Game.vue';
-import Midi from './components/Midi.vue'
+import Synth from './components/Synth.vue'
 
 export default {
   name: 'App',
   components: {
     Game,
-    Midi
+    Synth
   },
 };
 </script>

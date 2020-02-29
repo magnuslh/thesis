@@ -37,7 +37,8 @@
       "parser": "babel-eslint"
     },
     "rules": {
-      "require-jsdoc": 0
+      "require-jsdoc": 0,
+      "no-mixed-spaces-and-tabs": 0
     }
   },
   "browserslist": [

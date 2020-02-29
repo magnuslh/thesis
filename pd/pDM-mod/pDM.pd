@@ -1,8 +1,8 @@
-#N canvas 558 148 690 188 12;
+#N canvas 608 446 690 234 12;
 #X obj -28 32 cnv 15 230 145 empty empty Control 7 10 0 18 -228856
 -4160 0;
-#X obj -20 149 nbx 5 14 -1e+037 1e+037 0 0 empty empty Bar 10 -6 0
-10 -228856 -1 -1 33 256;
+#X obj -20 149 nbx 5 14 -1e+37 1e+37 0 0 empty empty Bar 10 -6 0 10
+-228856 -1 -1 21 256 0;
 #X obj -20 74 bng 40 250 50 0 empty pdm_play Play 0 -6 0 12 -24198
 -1 -1;
 #X obj 31 74 bng 40 250 50 0 empty pdm_stop Stop 0 -6 0 12 -258699
@@ -11,10 +11,10 @@
 1;
 #X obj 133 74 bng 40 250 50 0 empty empty Open(.pdm) -5 -6 0 12 -191407
 -1 -1;
-#N canvas 1013 142 753 757 pdm_expressive_sequencer 0;
-#X floatatom 407 117 5 0 0 0 - - -;
+#N canvas 494 98 753 780 pdm_expressive_sequencer 0;
+#X floatatom 407 117 5 0 0 0 - - -, f 5;
 #X msg 361 187 tempo \$1;
-#X floatatom 406 291 5 0 0 0 - - -;
+#X floatatom 406 291 5 0 0 0 - - -, f 5;
 #X obj 399 266 /;
 #X msg 399 240 1;
 #X text 359 261 dur;
@@ -24,7 +24,7 @@
 #X text 339 261 sl;
 #X obj 381 372 + 0;
 #X msg 361 91 bang;
-#X floatatom 369 140 5 0 0 0 - - -;
+#X floatatom 369 140 5 0 0 0 - - -, f 5;
 #X obj 361 116 +;
 #X obj 286 215 r NOTE;
 #X obj 399 214 t b f;
@@ -316,13 +316,13 @@
 #X msg 632 58 \; pd dsp 1;
 #X obj 105 267 +;
 #X obj 87 295 +;
-#N canvas 175 12 948 686 pdm_melody_lead 0;
+#N canvas 175 22 948 686 pdm_melody_lead 0;
 #X obj 565 27 inlet;
 #X obj 591 608 outlet;
 #X text 637 52 MIDI key number;
 #X obj 219 15 inlet;
-#X floatatom 591 458 5 0 0 1 FHV_(m/s) - -;
-#N canvas 0 0 684 766 pdm_key_24 0;
+#X floatatom 591 458 5 0 0 1 FHV_(m/s) - -, f 5;
+#N canvas 0 22 684 766 pdm_key_24 0;
 #X obj 114 68 inlet;
 #X obj 295 482 outlet;
 #X obj 468 132 * -26.502;
@@ -341,8 +341,8 @@
 #X obj 371 156 * 1.03973;
 #X obj 268 176 * -0.0214408;
 #X obj 198 236 * 0.000245325;
-#X obj 143 307 * -1.47872e-006;
-#X obj 76 360 * 3.6775e-009;
+#X obj 143 307 * -1.47872e-06;
+#X obj 76 360 * 3.6775e-09;
 #X connect 0 0 3 0;
 #X connect 2 0 14 0;
 #X connect 3 0 8 0;
@@ -387,8 +387,8 @@
 #X obj 333 338 +;
 #X obj 314 386 +;
 #X obj 295 437 +;
-#X obj 76 360 * 1.68006e-008;
-#X obj 143 307 * -8.03823e-006;
+#X obj 76 360 * 1.68006e-08;
+#X obj 143 307 * -8.03823e-06;
 #X obj 198 236 * 0.00159529;
 #X obj 268 176 * -0.167997;
 #X obj 371 156 * 9.89726;
@@ -432,7 +432,7 @@
 #X obj 181 166 *;
 #X obj 138 191 *;
 #X obj 138 71 trigger f f f f f;
-#X obj 128 255 * 3.50801e-007;
+#X obj 128 255 * 3.50801e-07;
 #X obj 466 130 * 72.1862;
 #X obj 371 156 * -1.80994;
 #X obj 267 176 * 0.0226112;
@@ -467,7 +467,7 @@
 #X connect 15 0 16 0;
 #X connect 16 0 12 0;
 #X restore 110 110 pd pdm_key_43;
-#N canvas 0 0 620 580 pdm_key_72 0;
+#N canvas 0 22 620 580 pdm_key_72 0;
 #X obj 114 44 inlet;
 #X obj 314 447 outlet;
 #X obj 223 100 *;
@@ -482,8 +482,8 @@
 #X obj 499 139 * 26.9163;
 #X obj 388 148 * -0.669603;
 #X obj 279 172 * 0.00832379;
-#X obj 193 236 * -5.17897e-005;
-#X obj 143 307 * 1.29387e-007;
+#X obj 193 236 * -5.17897e-05;
+#X obj 143 307 * 1.29387e-07;
 #X obj 314 413 - 431.736;
 #X connect 0 0 10 0;
 #X connect 2 0 3 1;
@@ -518,7 +518,7 @@
 #X obj 181 166 *;
 #X obj 154 190 *;
 #X obj 121 53 trigger f f f f f;
-#X obj 75 286 * 3.07511e-007;
+#X obj 75 286 * 3.07511e-07;
 #X obj 182 249 * -0.000124759;
 #X obj 268 176 * 0.0202214;
 #X obj 371 156 * -1.63411;
@@ -561,9 +561,9 @@
 #X obj 438 85 limit 78 106;
 #N canvas 40 84 1017 619 pdm_FHV_to_travel_time 0;
 #X obj 17 19 inlet;
-#X floatatom 420 184 5 0 0 1 ms - -;
+#X floatatom 420 184 5 0 0 1 ms - -, f 5;
 #X obj 17 274 outlet;
-#X floatatom 17 186 5 0 0 1 ms - -;
+#X floatatom 17 186 5 0 0 1 ms - -, f 5;
 #X obj 17 136 pow -0.7377;
 #X obj 17 161 * 58.39;
 #X obj 420 158 * 89.96;
@@ -572,7 +572,7 @@
 #X text 507 203 Pressed touch (Bösendorfer):;
 #X text 504 216 TTpr = 89.96*FHV^-0.5595;
 #X text 77 205 Struck touch (Bösendorfer):;
-#X floatatom 17 253 10 0 0 1 Travel_time_(ms) - -;
+#X floatatom 17 253 10 0 0 1 Travel_time_(ms) - -, f 10;
 #X text 63 19 FHV;
 #X obj 229 141 r pdm_staccato;
 #X obj 420 213 spigot;
@@ -601,7 +601,7 @@ actions" (Goebl \, Bresin & Galembo \, 2005).;
 #X connect 19 0 20 0;
 #X connect 20 0 15 1;
 #X restore 591 481 pd pdm_FHV_to_travel_time;
-#X floatatom 591 586 10 0 0 1 Travel_Time_(ms) - -;
+#X floatatom 591 586 10 0 0 1 Travel_Time_(ms) - -, f 10;
 #X obj 561 322 - 1;
 #X obj 561 346 abs;
 #X obj 561 375 *;
@@ -729,7 +729,7 @@ dB to FHV. The functions are made from datafile (Bosendorfer_overView_comparison
 #X text 10 98 using DM conversion formulas;
 #X text 11 118 from "syntobjects.lsp";
 #X text 141 269 Roland 1010 OrchII mapping;
-#X floatatom 327 436 5 0 0 0 - - -;
+#X floatatom 327 436 5 0 0 0 - - -, f 5;
 #X obj 320 302 trigger f f f f;
 #X obj 366 331 *;
 #X obj 322 355 *;
@@ -738,7 +738,7 @@ dB to FHV. The functions are made from datafile (Bosendorfer_overView_comparison
 #X msg 655 101 4;
 #X msg 766 98 0;
 #X text 791 133 default SBlive;
-#X floatatom 470 437 5 0 0 0 - - -;
+#X floatatom 470 437 5 0 0 0 - - -, f 5;
 #X obj 471 302 trigger f f f f;
 #X obj 517 331 *;
 #X obj 473 355 *;
@@ -746,17 +746,17 @@ dB to FHV. The functions are made from datafile (Bosendorfer_overView_comparison
 #X text 12 80 mapping sound level to midi velocity;
 #X text 193 19 sound level (dB);
 #X text 394 528 midi velocity;
-#X obj -12 402 * 2e-005;
+#X obj -12 402 * 2e-05;
 #X obj 27 375 * 0.0024;
 #X obj 63 403 * 0.1008;
 #X obj 100 376 * 3.2466;
 #X obj -3 430 plus 0 0 0 0 66.603;
-#X floatatom -3 454 5 0 0 0 - - -;
+#X floatatom -3 454 5 0 0 0 - - -, f 5;
 #X obj -8 301 trigger f f f f;
 #X obj -12 374 *;
 #X obj 63 326 *;
 #X obj 26 349 *;
-#X floatatom 183 438 5 0 0 0 - - -;
+#X floatatom 183 438 5 0 0 0 - - -, f 5;
 #X obj 186 297 trigger f f f f;
 #X obj 242 325 *;
 #X obj 191 348 *;
@@ -772,7 +772,7 @@ dB to FHV. The functions are made from datafile (Bosendorfer_overView_comparison
 #X obj 516 357 * 0.1192;
 #X obj 546 383 * 4.5149;
 #X obj 470 411 plus 0 0 0 62.764;
-#X floatatom 615 459 5 0 0 0 - - -;
+#X floatatom 615 459 5 0 0 0 - - -, f 5;
 #X obj 615 253 trigger f f f f;
 #X obj 614 321 *;
 #X obj 683 277 *;
@@ -783,19 +783,19 @@ dB to FHV. The functions are made from datafile (Bosendorfer_overView_comparison
 #X obj 681 391 * 0.0267;
 #X obj 698 410 * 3.8031;
 #X obj 616 434 plus 0 0 0 0 64.867;
-#X floatatom 785 446 5 0 0 0 - - -;
+#X floatatom 785 446 5 0 0 0 - - -, f 5;
 #X obj 783 291 trigger f f f f;
 #X obj 783 363 *;
 #X obj 858 315 *;
 #X obj 821 338 *;
-#X obj 784 392 * 1e-005;
+#X obj 784 392 * 1e-05;
 #X text 775 235 Kontakt 2 mapping: Steinway D Light;
 #X obj 330 162 demultiplex 0 1 2 3 4 5;
 #X obj 383 57 select SBlive Roland-1010 Roland-1010-OrchII Roland-A90
 Roland-PMA5 Technics-SX-P30 Kontakt-2;
 #X msg 710 99 5;
-#X floatatom 973 271 5 0 0 0 - - -;
-#X floatatom 975 452 5 0 0 0 - - -;
+#X floatatom 973 271 5 0 0 0 - - -, f 5;
+#X floatatom 975 452 5 0 0 0 - - -, f 5;
 #X obj 973 297 trigger f f f f;
 #X obj 973 369 *;
 #X obj 1048 321 *;
@@ -803,14 +803,14 @@ Roland-PMA5 Technics-SX-P30 Kontakt-2;
 #X obj 1084 371 * 4.9447;
 #X obj 1049 397 * 0.1041;
 #X obj 1011 371 * 0.0018;
-#X obj 974 398 * 1e-005;
+#X obj 974 398 * 1e-05;
 #X obj 975 427 plus 0 0 0 0 122.28;
 #X text 1065 265 Bjurlings mappning???;
 #X obj 821 365 * 0.0008;
 #X obj 859 391 * 0.0402;
 #X obj 894 365 * 2.6899;
 #X obj 785 421 plus 0 0 0 0 62.025;
-#X floatatom 336 50 5 0 0 0 - - -;
+#X floatatom 336 50 5 0 0 0 - - -, f 5;
 #X connect 0 0 73 0;
 #X connect 0 0 92 0;
 #X connect 4 0 74 0;
@@ -946,7 +946,7 @@ Roland-PMA5 Technics-SX-P30 Kontakt-2;
 #X obj 225 28 inlet;
 #X obj 278 28 inlet;
 #X text 27 6 play;
-#N canvas 0 0 490 340 repeat 0;
+#N canvas 0 22 490 340 repeat 0;
 #X obj 60 31 inlet;
 #X obj 183 31 inlet;
 #X obj 101 172 outlet;
@@ -971,7 +971,7 @@ Roland-PMA5 Technics-SX-P30 Kontakt-2;
 #X msg 278 84 read \$1;
 #X obj 27 82 s pdm_play;
 #X obj 125 58 s pdm_stop;
-#N canvas 0 0 159 198 pdm_ml_sign 0;
+#N canvas 0 22 159 198 pdm_ml_sign 0;
 #X obj 13 12 r ml;
 #X obj 32 74 abs;
 #X obj 13 98 /;
@@ -983,11 +983,11 @@ Roland-PMA5 Technics-SX-P30 Kontakt-2;
 #X connect 3 0 2 0;
 #X connect 3 1 1 0;
 #X restore 98 357 pd pdm_ml_sign;
-#N canvas 0 0 225 229 pdm_melody_gain 0;
+#N canvas 0 22 225 229 pdm_melody_gain 0;
 #X obj 7 34 == 1;
 #X obj 7 59 moses 1;
 #X obj 77 59 r melody_gain;
-#X floatatom 58 137 5 0 0 0 - - -;
+#X floatatom 58 137 5 0 0 0 - - -, f 5;
 #X obj 58 110 f;
 #X obj 58 83 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
 -1;
@@ -1005,8 +1005,8 @@ Roland-PMA5 Technics-SX-P30 Kontakt-2;
 #X connect 8 0 6 0;
 #X restore 69 328 pd pdm_melody_gain;
 #X obj 256 466 pipe f f f f 0;
-#X floatatom 69 437 5 0 0 0 - - -;
-#N canvas 0 0 784 662 all_other_pdm_data 0;
+#X floatatom 69 437 5 0 0 0 - - -, f 5;
+#N canvas 0 22 784 662 all_other_pdm_data 0;
 #X obj 183 129 pgmout;
 #X obj 183 103 unpack f f;
 #X obj 183 50 r PROGRAM;
@@ -1036,13 +1036,13 @@ Roland-PMA5 Technics-SX-P30 Kontakt-2;
 #X obj 329 20 inlet;
 #X obj 327 525 outlet;
 #X text 18 220 SBLive mapping;
-#X floatatom 274 453 5 0 0 0 - - -;
+#X floatatom 274 453 5 0 0 0 - - -, f 5;
 #X obj 245 318 trigger f f f f;
 #X obj 321 347 *;
 #X obj 277 371 *;
 #X text 249 217 Roland 1010 mapping;
 #X obj 382 21 inlet;
-#X floatatom 245 295 5 0 0 0 - - -;
+#X floatatom 245 295 5 0 0 0 - - -, f 5;
 #X msg 383 108 0;
 #X msg 493 106 1;
 #X msg 601 104 2;
@@ -1051,11 +1051,11 @@ Roland-PMA5 Technics-SX-P30 Kontakt-2;
 #X text 12 80 mapping vol to midi volume;
 #X text 10 98 using DM conversion formulas;
 #X text 11 118 from "syntobjects.lsp";
-#X floatatom 44 452 5 0 0 0 - - -;
+#X floatatom 44 452 5 0 0 0 - - -, f 5;
 #X obj 11 317 trigger f f f f;
 #X obj 87 347 *;
 #X obj 45 371 *;
-#X floatatom 11 294 5 0 0 0 - - -;
+#X floatatom 11 294 5 0 0 0 - - -, f 5;
 #X obj 15 398 * 0.0002;
 #X obj 87 398 * 0.0581;
 #X obj 158 399 * 5.1593;
@@ -1065,11 +1065,11 @@ Roland-PMA5 Technics-SX-P30 Kontakt-2;
 #X obj 393 396 * 7.2826;
 #X obj 274 427 plus 0 0 0 126.16;
 #X text 248 239 Roland 1010 OrchII mapping;
-#X floatatom 502 452 5 0 0 0 - - -;
+#X floatatom 502 452 5 0 0 0 - - -, f 5;
 #X obj 473 317 trigger f f f f;
 #X obj 549 346 *;
 #X obj 505 370 *;
-#X floatatom 473 294 5 0 0 0 - - -;
+#X floatatom 473 294 5 0 0 0 - - -, f 5;
 #X text 476 258 A90 mapping;
 #X obj 477 396 * 0.0027;
 #X obj 549 397 * 0.2322;
@@ -1082,17 +1082,17 @@ Roland-PMA5 Technics-SX-P30;
 #X msg 744 106 4;
 #X msg 814 104 0;
 #X text 791 133 default SBlive;
-#X floatatom 733 452 5 0 0 0 - - -;
+#X floatatom 733 452 5 0 0 0 - - -, f 5;
 #X obj 704 317 trigger f f f f;
 #X obj 780 346 *;
 #X obj 736 370 *;
-#X floatatom 704 294 5 0 0 0 - - -;
+#X floatatom 704 294 5 0 0 0 - - -, f 5;
 #X text 702 261 PMA5 mapping;
-#X floatatom 954 448 5 0 0 0 - - -;
+#X floatatom 954 448 5 0 0 0 - - -, f 5;
 #X obj 925 313 trigger f f f f;
 #X obj 1001 342 *;
 #X obj 957 366 *;
-#X floatatom 925 290 5 0 0 0 - - -;
+#X floatatom 925 290 5 0 0 0 - - -, f 5;
 #X text 922 257 SX-P30 mapping;
 #X obj 708 396 * 0.0013;
 #X obj 780 397 * 0.1652;
@@ -1329,85 +1329,85 @@ Roland-PMA5 Technics-SX-P30;
 #N canvas 814 153 529 620 all_performance_rules 0;
 #X obj 49 75 hsl 128 20 -5 5 0 0 dmk1 dmk1 empty -2 -6 0 8 -225271
 -1 -1 6350 1;
-#X obj -2 75 nbx 4 20 -1e+037 1e+037 0 0 dmk1 dmk1 empty 0 -6 0 10
--225271 -1 -1 0 256;
+#X obj -2 75 nbx 4 20 -1e+37 1e+37 0 0 dmk1 dmk1 empty 0 -6 0 10 -225271
+-1 -1 0 256 0;
 #X text 351 51 k tempo;
-#X obj 410 75 nbx 4 20 -1e+037 1e+037 0 0 dms1 dmk1 empty 0 -6 0 10
--262131 -1 -1 0 256;
-#X obj 362 75 nbx 4 20 -1e+037 1e+037 0 0 dmt1 dmk1 empty 0 -6 0 10
--261681 -1 -1 0 256;
+#X obj 410 75 nbx 4 20 -1e+37 1e+37 0 0 dms1 dmk1 empty 0 -6 0 10 -262131
+-1 -1 0 256 0;
+#X obj 362 75 nbx 4 20 -1e+37 1e+37 0 0 dmt1 dmk1 empty 0 -6 0 10 -261681
+-1 -1 0 256 0;
 #X text 459 50 k art;
 #X text 414 51 k SL;
 #X obj 49 95 hsl 128 20 -5 5 0 0 dmk2 dmk2 empty -2 -6 0 8 -225271
--1 -1 7892 1;
-#X obj -2 95 nbx 4 20 -1e+037 1e+037 0 0 dmk2 dmk2 empty 0 -6 0 10
--225271 -1 -1 1.21394 256;
-#X obj 410 95 nbx 4 20 -1e+037 1e+037 0 0 dms2 dmk2 empty 0 -6 0 10
--262131 -1 -1 1.21394 256;
-#X obj 362 95 nbx 4 20 -1e+037 1e+037 0 0 dmt2 dmk2 empty 0 -6 0 10
--261681 -1 -1 1.21394 256;
+-1 -1 7620 1;
+#X obj -2 95 nbx 4 20 -1e+37 1e+37 0 0 dmk2 dmk2 empty 0 -6 0 10 -225271
+-1 -1 1 256 0;
+#X obj 410 95 nbx 4 20 -1e+37 1e+37 0 0 dms2 dmk2 empty 0 -6 0 10 -262131
+-1 -1 1 256 0;
+#X obj 362 95 nbx 4 20 -1e+37 1e+37 0 0 dmt2 dmk2 empty 0 -6 0 10 -261681
+-1 -1 1 256 0;
 #X obj 49 115 hsl 128 20 -5 5 0 0 dmk3 dmk3 empty -2 -6 0 8 -225271
--1 -1 7892 1;
-#X obj -2 115 nbx 4 20 -1e+037 1e+037 0 0 dmk3 dmk3 empty 0 -6 0 10
--225271 -1 -1 1.21394 256;
-#X obj 410 115 nbx 4 20 -1e+037 1e+037 0 0 dms3 dmk3 empty 0 -6 0 10
--262131 -1 -1 1.21394 256;
-#X obj 362 115 nbx 4 20 -1e+037 1e+037 0 0 dmt3 dmk3 empty 0 -6 0 10
--261681 -1 -1 1.21394 256;
+-1 -1 7620 1;
+#X obj -2 115 nbx 4 20 -1e+37 1e+37 0 0 dmk3 dmk3 empty 0 -6 0 10 -225271
+-1 -1 1 256 0;
+#X obj 410 115 nbx 4 20 -1e+37 1e+37 0 0 dms3 dmk3 empty 0 -6 0 10
+-262131 -1 -1 1 256 0;
+#X obj 362 115 nbx 4 20 -1e+37 1e+37 0 0 dmt3 dmk3 empty 0 -6 0 10
+-261681 -1 -1 1 256 0;
 #X obj 49 135 hsl 128 20 -5 5 0 0 dmk4 dmk4 empty -2 -6 0 8 -225271
 -1 -1 6350 1;
-#X obj -2 135 nbx 4 20 -1e+037 1e+037 0 0 dmk4 dmk4 empty 0 -6 0 10
--225271 -1 -1 0 256;
-#X obj 410 135 nbx 4 20 -1e+037 1e+037 0 0 dms4 dmk4 empty 0 -6 0 10
--262131 -1 -1 0 256;
-#X obj 362 135 nbx 4 20 -1e+037 1e+037 0 0 dmt4 dmk4 empty 0 -6 0 10
--261681 -1 -1 0 256;
+#X obj -2 135 nbx 4 20 -1e+37 1e+37 0 0 dmk4 dmk4 empty 0 -6 0 10 -225271
+-1 -1 0 256 0;
+#X obj 410 135 nbx 4 20 -1e+37 1e+37 0 0 dms4 dmk4 empty 0 -6 0 10
+-262131 -1 -1 0 256 0;
+#X obj 362 135 nbx 4 20 -1e+37 1e+37 0 0 dmt4 dmk4 empty 0 -6 0 10
+-261681 -1 -1 0 256 0;
 #X obj 49 155 hsl 128 20 -5 5 0 0 dmk5 dmk5 empty -2 -6 0 8 -225271
 -1 -1 6350 1;
-#X obj -2 155 nbx 4 20 -1e+037 1e+037 0 0 dmk5 dmk5 empty 0 -6 0 10
--225271 -1 -1 0 256;
-#X obj 410 155 nbx 4 20 -1e+037 1e+037 0 0 dms5 dmk5 empty 0 -6 0 10
--262131 -1 -1 0 256;
-#X obj 362 155 nbx 4 20 -1e+037 1e+037 0 0 dmt5 dmk5 empty 0 -6 0 10
--261681 -1 -1 0 256;
+#X obj -2 155 nbx 4 20 -1e+37 1e+37 0 0 dmk5 dmk5 empty 0 -6 0 10 -225271
+-1 -1 0 256 0;
+#X obj 410 155 nbx 4 20 -1e+37 1e+37 0 0 dms5 dmk5 empty 0 -6 0 10
+-262131 -1 -1 0 256 0;
+#X obj 362 155 nbx 4 20 -1e+37 1e+37 0 0 dmt5 dmk5 empty 0 -6 0 10
+-261681 -1 -1 0 256 0;
 #X obj 49 175 hsl 128 20 -5 5 0 0 dmk6 dmk6 empty -2 -6 0 8 -225271
 -1 -1 6350 1;
-#X obj -2 175 nbx 4 20 -1e+037 1e+037 0 0 dmk6 dmk6 empty 0 -6 0 10
--225271 -1 -1 0 256;
-#X obj 410 175 nbx 4 20 -1e+037 1e+037 0 0 dms6 dmk6 empty 0 -6 0 10
--262131 -1 -1 0 256;
-#X obj 362 175 nbx 4 20 -1e+037 1e+037 0 0 dmt6 dmk6 empty 0 -6 0 10
--261681 -1 -1 0 256;
+#X obj -2 175 nbx 4 20 -1e+37 1e+37 0 0 dmk6 dmk6 empty 0 -6 0 10 -225271
+-1 -1 0 256 0;
+#X obj 410 175 nbx 4 20 -1e+37 1e+37 0 0 dms6 dmk6 empty 0 -6 0 10
+-262131 -1 -1 0 256 0;
+#X obj 362 175 nbx 4 20 -1e+37 1e+37 0 0 dmt6 dmk6 empty 0 -6 0 10
+-261681 -1 -1 0 256 0;
 #X obj 49 195 hsl 128 20 -5 5 0 0 dmk7 dmk7 empty -2 -6 0 8 -225271
 -1 -1 6350 1;
-#X obj -2 195 nbx 4 20 -1e+037 1e+037 0 0 dmk7 dmk7 empty 0 -6 0 10
--225271 -1 -1 0 256;
-#X obj 362 195 nbx 4 20 -1e+037 1e+037 0 0 dmt7 dmk7 empty 0 -6 0 10
--261681 -1 -1 0 256;
-#X obj 460 236 nbx 4 20 -1e+037 1e+037 0 0 dma9 dmk9 empty 0 -6 0 10
--228992 -1 -1 1.34221 256;
+#X obj -2 195 nbx 4 20 -1e+37 1e+37 0 0 dmk7 dmk7 empty 0 -6 0 10 -225271
+-1 -1 0 256 0;
+#X obj 362 195 nbx 4 20 -1e+37 1e+37 0 0 dmt7 dmk7 empty 0 -6 0 10
+-261681 -1 -1 0 256 0;
+#X obj 460 236 nbx 4 20 -1e+37 1e+37 0 0 dma9 dmk9 empty 0 -6 0 10
+-228992 -1 -1 1.8 256 0;
 #X obj 49 215 hsl 128 20 -5 5 0 0 dmk8 dmk8 empty -2 -6 0 8 -225271
--1 -1 6849 1;
-#X obj -2 215 nbx 4 20 -1e+037 1e+037 0 0 dmk8 dmk8 empty 0 -6 0 10
--225271 -1 -1 0.39307 256;
-#X obj 410 295 nbx 4 20 -1e+037 1e+037 0 0 dms12 dmk12 empty 0 -6 0
-10 -262131 -1 -1 1 256;
+-1 -1 6985 1;
+#X obj -2 215 nbx 4 20 -1e+37 1e+37 0 0 dmk8 dmk8 empty 0 -6 0 10 -225271
+-1 -1 0.5 256 0;
+#X obj 410 295 nbx 4 20 -1e+37 1e+37 0 0 dms12 dmk12 empty 0 -6 0 10
+-262131 -1 -1 1 256 0;
 #X obj 49 235 hsl 128 20 -5 5 0 0 dmk9 dmk9 empty -2 -6 0 8 -225271
--1 -1 8055 1;
-#X obj -2 235 nbx 4 20 -1e+037 1e+037 0 0 dmk9 dmk9 empty 0 -6 0 10
--225271 -1 -1 1.34221 256;
-#X obj 410 315 nbx 4 20 -1e+037 1e+037 0 0 dms13 dmk13 empty 0 -6 0
-10 -262131 -1 -1 0.410355 256;
-#X obj 362 235 nbx 4 20 -1e+037 1e+037 0 0 dmt9 dmk9 empty 0 -6 0 10
--261681 -1 -1 1.34221 256;
+-1 -1 8636 1;
+#X obj -2 235 nbx 4 20 -1e+37 1e+37 0 0 dmk9 dmk9 empty 0 -6 0 10 -225271
+-1 -1 1.8 256 0;
+#X obj 410 315 nbx 4 20 -1e+37 1e+37 0 0 dms13 dmk13 empty 0 -6 0 10
+-262131 -1 -1 1.5 256 0;
+#X obj 362 235 nbx 4 20 -1e+37 1e+37 0 0 dmt9 dmk9 empty 0 -6 0 10
+-261681 -1 -1 1.8 256 0;
 #X obj 50 503 hsl 128 20 0.5 2 0 0 dmtsc dmtsc empty -2 -6 0 8 -261681
--1 -1 3475 1;
-#X obj -1 503 nbx 4 20 -1e+037 1e+037 0 0 dmtsc dmtsc empty 0 -6 0
-10 -261681 -1 -1 0.910403 256;
+-1 -1 5080 1;
+#X obj -1 503 nbx 4 20 -1e+37 1e+37 0 0 dmtsc dmtsc empty 0 -6 0 10
+-261681 -1 -1 1.1 256 0;
 #X obj 50 523 hsl 128 20 -10 10 0 0 dmssc dmssc empty -2 -6 0 8 -262131
--1 -1 5784 1;
-#X obj -1 523 nbx 4 20 -1e+037 1e+037 0 0 dmssc dmssc empty 0 -6 0
-10 -262131 -1 -1 -0.891017 256;
+-1 -1 8255 1;
+#X obj -1 523 nbx 4 20 -1e+37 1e+37 0 0 dmssc dmssc empty 0 -6 0 10
+-262131 -1 -1 3 256 0;
 #X text 192 503 Tempo;
 #X text 192 523 Sound level;
 #X text 33 51 k values;
@@ -1417,7 +1417,7 @@ Roland-PMA5 Technics-SX-P30;
 #X text 191 75 1 Phrase arch 4;
 #X text 191 95 2 Phrase arch 5;
 #X text 191 115 3 Phrase arch 6;
-#N canvas 476 0 808 766 rule_presets 0;
+#N canvas 476 22 808 766 rule_presets 0;
 #X obj 51 32 inlet;
 #X obj 184 31 inlet;
 #X obj 260 37 loadbang;
@@ -1447,78 +1447,78 @@ dmk6 0 \; dmk7 0 \; dmk8 0 \; dmk9 1.2 \; dmk10 1 \; dmk11 1 \; dmk12
 -1 -1;
 #X obj 49 255 hsl 128 20 -5 5 0 0 dmk10 dmk10 empty -2 -6 0 8 -225271
 -1 -1 7620 1;
-#X obj -2 255 nbx 4 20 -1e+037 1e+037 0 0 dmk10 dmk10 empty 0 -6 0
-10 -225271 -1 -1 1 256;
-#X obj 410 255 nbx 4 20 -1e+037 1e+037 0 0 dms10 dmk10 empty 0 -6 0
-10 -262131 -1 -1 1 256;
-#X obj 362 215 nbx 4 20 -1e+037 1e+037 0 0 dmt8 dmk8 empty 0 -6 0 10
--261681 -1 -1 0.39307 256;
+#X obj -2 255 nbx 4 20 -1e+37 1e+37 0 0 dmk10 dmk10 empty 0 -6 0 10
+-225271 -1 -1 1 256 0;
+#X obj 410 255 nbx 4 20 -1e+37 1e+37 0 0 dms10 dmk10 empty 0 -6 0 10
+-262131 -1 -1 1 256 0;
+#X obj 362 215 nbx 4 20 -1e+37 1e+37 0 0 dmt8 dmk8 empty 0 -6 0 10
+-261681 -1 -1 0.5 256 0;
 #X obj 49 275 hsl 128 20 -5 5 0 0 dmk11 dmk11 empty -2 -6 0 8 -225271
 -1 -1 7620 1;
-#X obj -2 275 nbx 4 20 -1e+037 1e+037 0 0 dmk11 dmk11 empty 0 -6 0
-10 -225271 -1 -1 1 256;
-#X obj 410 275 nbx 4 20 -1e+037 1e+037 0 0 dms11 dmk11 empty 0 -6 0
-10 -262131 -1 -1 1 256;
-#X obj 362 275 nbx 4 20 -1e+037 1e+037 0 0 dmt11 dmk11 empty 0 -6 0
-10 -261681 -1 -1 1 256;
+#X obj -2 275 nbx 4 20 -1e+37 1e+37 0 0 dmk11 dmk11 empty 0 -6 0 10
+-225271 -1 -1 1 256 0;
+#X obj 410 275 nbx 4 20 -1e+37 1e+37 0 0 dms11 dmk11 empty 0 -6 0 10
+-262131 -1 -1 1 256 0;
+#X obj 362 275 nbx 4 20 -1e+37 1e+37 0 0 dmt11 dmk11 empty 0 -6 0 10
+-261681 -1 -1 1 256 0;
 #X obj 49 295 hsl 128 20 -5 5 0 0 dmk12 dmk12 empty -2 -6 0 8 -225271
 -1 -1 7620 1;
-#X obj -2 295 nbx 4 20 -1e+037 1e+037 0 0 dmk12 dmk12 empty 0 -6 0
-10 -225271 -1 -1 1 256;
-#X obj 362 295 nbx 4 20 -1e+037 1e+037 0 0 dmt12 dmk12 empty 0 -6 0
-10 -261681 -1 -1 1 256;
+#X obj -2 295 nbx 4 20 -1e+37 1e+37 0 0 dmk12 dmk12 empty 0 -6 0 10
+-225271 -1 -1 1 256 0;
+#X obj 362 295 nbx 4 20 -1e+37 1e+37 0 0 dmt12 dmk12 empty 0 -6 0 10
+-261681 -1 -1 1 256 0;
 #X obj 49 315 hsl 128 20 -5 5 0 0 dmk13 dmk13 empty -2 -6 0 8 -225271
--1 -1 6871 1;
-#X obj -2 315 nbx 4 20 -1e+037 1e+037 0 0 dmk13 dmk13 empty 0 -6 0
-10 -225271 -1 -1 0.410355 256;
-#X obj 362 315 nbx 4 20 -1e+037 1e+037 0 0 dmt13 dmk13 empty 0 -6 0
-10 -261681 -1 -1 0.410355 256;
+-1 -1 8255 1;
+#X obj -2 315 nbx 4 20 -1e+37 1e+37 0 0 dmk13 dmk13 empty 0 -6 0 10
+-225271 -1 -1 1.5 256 0;
+#X obj 362 315 nbx 4 20 -1e+37 1e+37 0 0 dmt13 dmk13 empty 0 -6 0 10
+-261681 -1 -1 1.5 256 0;
 #X obj 49 335 hsl 128 20 -5 5 0 0 dmk14 dmk14 empty -2 -6 0 8 -225271
 -1 -1 6350 1;
-#X obj -2 335 nbx 4 20 -1e+037 1e+037 0 0 dmk14 dmk14 empty 0 -6 0
-10 -225271 -1 -1 0 256;
+#X obj -2 335 nbx 4 20 -1e+37 1e+37 0 0 dmk14 dmk14 empty 0 -6 0 10
+-225271 -1 -1 0 256 0;
 #X obj 49 355 hsl 128 20 -5 5 0 0 dmk15 dmk15 empty -2 -6 0 8 -225271
 -1 -1 7620 1;
-#X obj -2 355 nbx 4 20 -1e+037 1e+037 0 0 dmk15 dmk15 empty 0 -6 0
-10 -225271 -1 -1 1 256;
+#X obj -2 355 nbx 4 20 -1e+37 1e+37 0 0 dmk15 dmk15 empty 0 -6 0 10
+-225271 -1 -1 1 256 0;
 #X obj 49 375 hsl 128 20 -5 5 0 0 dmk16 dmk16 empty -2 -6 0 8 -225271
--1 -1 8008 1;
-#X obj -2 375 nbx 4 20 -1e+037 1e+037 0 0 dmk16 dmk16 empty 0 -6 0
-10 -225271 -1 -1 1.3058 256;
-#X obj 459 375 nbx 4 20 -1e+037 1e+037 0 0 dma16 dmk16 empty 0 -6 0
-10 -228992 -1 -1 1.3058 256;
+-1 -1 8890 1;
+#X obj -2 375 nbx 4 20 -1e+37 1e+37 0 0 dmk16 dmk16 empty 0 -6 0 10
+-225271 -1 -1 2 256 0;
+#X obj 459 375 nbx 4 20 -1e+37 1e+37 0 0 dma16 dmk16 empty 0 -6 0 10
+-228992 -1 -1 2 256 0;
 #X obj 49 395 hsl 128 20 -5 5 0 0 dmk17 dmk17 empty -2 -6 0 8 -225271
 -1 -1 7620 1;
-#X obj -2 395 nbx 4 20 -1e+037 1e+037 0 0 dmk17 dmk17 empty 0 -6 0
-10 -225271 -1 -1 1 256;
-#X obj 459 395 nbx 4 20 -1e+037 1e+037 0 0 dma17 dmk17 empty 0 -6 0
-10 -228992 -1 -1 1 256;
+#X obj -2 395 nbx 4 20 -1e+37 1e+37 0 0 dmk17 dmk17 empty 0 -6 0 10
+-225271 -1 -1 1 256 0;
+#X obj 459 395 nbx 4 20 -1e+37 1e+37 0 0 dma17 dmk17 empty 0 -6 0 10
+-228992 -1 -1 1 256 0;
 #X obj 49 415 hsl 128 20 -5 5 0 0 dmk18 dmk18 empty -2 -6 0 8 -225271
 -1 -1 7620 1;
-#X obj -2 415 nbx 4 20 -1e+037 1e+037 0 0 dmk18 dmk18 empty 0 -6 0
-10 -225271 -1 -1 1 256;
-#X obj 362 335 nbx 4 20 -1e+037 1e+037 0 0 dmt14 dmk14 empty 0 -6 0
-10 -261681 -1 -1 0 256;
-#X obj 459 415 nbx 4 20 -1e+037 1e+037 0 0 dma18 dmk18 empty 0 -6 0
-10 -228992 -1 -1 1 256;
+#X obj -2 415 nbx 4 20 -1e+37 1e+37 0 0 dmk18 dmk18 empty 0 -6 0 10
+-225271 -1 -1 1 256 0;
+#X obj 362 335 nbx 4 20 -1e+37 1e+37 0 0 dmt14 dmk14 empty 0 -6 0 10
+-261681 -1 -1 0 256 0;
+#X obj 459 415 nbx 4 20 -1e+37 1e+37 0 0 dma18 dmk18 empty 0 -6 0 10
+-228992 -1 -1 1 256 0;
 #X obj 49 435 hsl 128 20 -5 5 0 0 dmk19 dmk19 empty -2 -6 0 8 -225271
--1 -1 7668 1;
-#X obj -2 435 nbx 4 20 -1e+037 1e+037 0 0 dmk19 dmk19 empty 0 -6 0
-10 -225271 -1 -1 1.03761 256;
-#X obj 362 355 nbx 4 20 -1e+037 1e+037 0 0 dmt15 dmk15 empty 0 -6 0
-10 -261681 -1 -1 1 256;
-#X obj 459 435 nbx 4 20 -1e+037 1e+037 0 0 dma19 dmk19 empty 0 -6 0
-10 -228992 -1 -1 1.03761 256;
+-1 -1 9525 1;
+#X obj -2 435 nbx 4 20 -1e+37 1e+37 0 0 dmk19 dmk19 empty 0 -6 0 10
+-225271 -1 -1 2.5 256 0;
+#X obj 362 355 nbx 4 20 -1e+37 1e+37 0 0 dmt15 dmk15 empty 0 -6 0 10
+-261681 -1 -1 1 256 0;
+#X obj 459 435 nbx 4 20 -1e+37 1e+37 0 0 dma19 dmk19 empty 0 -6 0 10
+-228992 -1 -1 2.5 256 0;
 #X obj 49 455 hsl 128 20 -5 5 0 0 dmk20 dmk20 empty -2 -6 0 8 -225271
 -1 -1 6350 1;
-#X obj -2 455 nbx 4 20 -1e+037 1e+037 0 0 dmk20 dmk20 empty 0 -6 0
-10 -225271 -1 -1 0 256;
-#X obj 410 455 nbx 4 20 -1e+037 1e+037 0 0 dms20 dmk20 empty 0 -6 0
-10 -262131 -1 -1 0 256;
-#X obj 362 455 nbx 4 20 -1e+037 1e+037 0 0 dmt20 dmk20 empty 0 -6 0
-10 -261681 -1 -1 0 256;
-#X obj 459 455 nbx 4 20 -1e+037 1e+037 0 0 dma20 dmk20 empty 0 -6 0
-10 -228992 -1 -1 0 256;
+#X obj -2 455 nbx 4 20 -1e+37 1e+37 0 0 dmk20 dmk20 empty 0 -6 0 10
+-225271 -1 -1 0 256 0;
+#X obj 410 455 nbx 4 20 -1e+37 1e+37 0 0 dms20 dmk20 empty 0 -6 0 10
+-262131 -1 -1 0 256 0;
+#X obj 362 455 nbx 4 20 -1e+37 1e+37 0 0 dmt20 dmk20 empty 0 -6 0 10
+-261681 -1 -1 0 256 0;
+#X obj 459 455 nbx 4 20 -1e+37 1e+37 0 0 dma20 dmk20 empty 0 -6 0 10
+-228992 -1 -1 0 256 0;
 #X text 191 135 4 Phrase arch 7;
 #X text 191 155 5 Phrase ritardando 4;
 #X text 192 175 6 Phrase ritardando 5;
@@ -1536,16 +1536,16 @@ dmk6 0 \; dmk7 0 \; dmk8 0 \; dmk9 1.2 \; dmk10 1 \; dmk11 1 \; dmk12
 #X text 183 416 18 Score staccato art;
 #X text 183 436 19 Overall articulation;
 #X text 183 455 20;
-#X obj 410 195 nbx 4 20 -1e+037 1e+037 0 0 dms7 dmk7 empty 0 -6 0 10
--262131 -1 -1 0 256;
+#X obj 410 195 nbx 4 20 -1e+37 1e+37 0 0 dms7 dmk7 empty 0 -6 0 10
+-262131 -1 -1 0 256 0;
 #X obj 50 571 hsl 128 20 -10 10 0 0 melody_gain melody_gain empty -2
 -6 0 8 -260818 -1 -1 8890 1;
-#X obj -1 571 nbx 4 20 -1e+037 1e+037 0 0 melody_gain melody_gain empty
-0 -6 0 10 -260818 -1 -1 4 256;
+#X obj -1 571 nbx 4 20 -1e+37 1e+37 0 0 melody_gain melody_gain empty
+0 -6 0 10 -260818 -1 -1 4 256 0;
 #X obj 50 591 hsl 128 20 -2 2 0 0 ml ml empty -2 -6 0 8 -260818 -1
 -1 7937 1;
-#X obj -1 591 nbx 4 20 -1e+037 1e+037 0 0 ml ml empty 0 -6 0 10 -260818
--1 -1 0.5 256;
+#X obj -1 591 nbx 4 20 -1e+37 1e+37 0 0 ml ml empty 0 -6 0 10 -260818
+-1 -1 0.5 256 0;
 #X text 29 547 Melody Lead;
 #X text 191 591 Synchronization (melody lead);
 #X text 192 571 Melody Gain (dB);
@@ -1555,9 +1555,9 @@ dmk6 0 \; dmk7 0 \; dmk8 0 \; dmk9 1.2 \; dmk10 1 \; dmk11 1 \; dmk12
 #X restore 219 64 pd all_performance_rules;
 #N canvas 101 61 429 475 2D_kinematics_energy_space 0;
 #X obj 464 135 vsl 20 128 -1 1 0 0 dmx3 dmx3 Kinematics -30 -12 0 12
--261681 -143491 -1 4222 1;
+-261681 -143491 -1 0 1;
 #X obj 557 135 vsl 20 128 -1 1 0 0 dmy3 dmy3 Energy -20 -12 0 12 -225280
--1 -1 4159 1;
+-1 -1 0 1;
 #X text 624 225 comment;
 #X obj 12 41 grid grid1 400 -1 1 400 -1 1 0 0.005 0.005 1 1 144 310
 ;
@@ -1573,7 +1573,7 @@ dmk6 0 \; dmk7 0 \; dmk8 0 \; dmk9 1.2 \; dmk10 1 \; dmk11 1 \; dmk12
 #X obj 365 440 s dmy3;
 #X obj 85 5 cnv 25 60 25 empty empty Kinematics-Energy 1 13 0 18 -262144
 -355 0;
-#N canvas 0 0 789 364 kin_energy_interp 0;
+#N canvas 0 22 789 364 kin_energy_interp 0;
 #X text 45 5 Phrasing;
 #N canvas 229 194 552 187 interpolate_k 0;
 #X obj 20 76 expr (1.0 / 4.0) * (($f5 - $f6 - $f4 + $f3) * $f1 + $f5
@@ -1902,7 +1902,7 @@ $f1 + $f6 + $f5 + $f4 + $f3);
 0;
 #X obj 11 388 s dmx2;
 #X obj 364 387 s dmy2;
-#N canvas 0 0 982 412 mus_map_interp 0;
+#N canvas 0 22 982 412 mus_map_interp 0;
 #X text 87 -54 Phrasing;
 #N canvas 229 194 546 181 interpolate_k 0;
 #X obj 20 76 expr (1.0 / 4.0) * (($f5 - $f6 - $f4 + $f3) * $f1 + $f5
@@ -2234,13 +2234,13 @@ $f1 + $f6 + $f5 + $f4 + $f3);
 #X restore 288 410 pd mus_map_interp;
 #X text 79 391 Control scaling;
 #X obj 95 415 hsl 128 20 0 2 0 0 dmtsc2 dmtsc2 empty -2 -6 0 8 -261681
--1 -1 4850 1;
-#X obj 44 415 nbx 4 20 -1e+037 1e+037 0 0 dmtsc2 dmtsc2 empty 0 -6
-0 10 -261681 -1 -1 0.76378 256;
+-1 -1 6350 1;
+#X obj 44 415 nbx 4 20 -1e+37 1e+37 0 0 dmtsc2 dmtsc2 empty 0 -6 0
+10 -261681 -1 -1 1 256 0;
 #X obj 95 435 hsl 128 20 0 2 0 0 dmssc2 dmssc2 empty -2 -6 0 8 -262131
 -1 -1 6350 1;
-#X obj 44 435 nbx 4 20 -1e+037 1e+037 0 0 dmssc2 dmssc2 empty 0 -6
-0 10 -262131 -1 -1 1 256;
+#X obj 44 435 nbx 4 20 -1e+37 1e+37 0 0 dmssc2 dmssc2 empty 0 -6 0
+10 -262131 -1 -1 1 256 0;
 #X text 229 416 Tempo;
 #X text 228 435 Sound level;
 #X connect 2 0 7 0;
@@ -2273,7 +2273,7 @@ $f1 + $f6 + $f5 + $f4 + $f3);
 #X connect 8 0 6 0;
 #X restore 473 149 pd select-synth;
 #X obj 473 58 vradio 15 1 0 6 empty empty empty 0 -6 0 8 -191407 -1
--1 2;
+-1 0;
 #X text 492 55 SBlive;
 #X text 491 71 Roland-1010;
 #X text 492 86 Roland-1010-OrchII;
@@ -2282,12 +2282,12 @@ $f1 + $f6 + $f5 + $f4 + $f3);
 #X text 492 117 Roland-PMA5;
 #X obj -28 -1 cnv 15 680 27 empty empty pDM_expressive_sequencer 10
 14 0 20 -261549 -16662 0;
-#N canvas 0 0 594 319 auxillary_stuff 0;
+#N canvas 0 22 594 319 auxillary_stuff 0;
 #X text 212 181 Simple happy \, sad \, angry mapping;
 #N canvas 128 93 718 324 gesture_data_input_emotion 0;
-#X floatatom 49 -175 5 0 0 0 - - -;
-#X floatatom 180 -177 5 0 0 0 - - -;
-#X floatatom 307 -179 5 0 0 0 - - -;
+#X floatatom 49 -175 5 0 0 0 - - -, f 5;
+#X floatatom 180 -177 5 0 0 0 - - -, f 5;
+#X floatatom 307 -179 5 0 0 0 - - -, f 5;
 #X obj 49 -198 OSCroute /angry;
 #X obj 180 -199 OSCroute /happy;
 #X obj 308 -200 OSCroute /sad;
@@ -2476,15 +2476,15 @@ when the k values are added. Mapping code below.;
 #N canvas 186 35 697 723 midi_input 0;
 #X obj 114 49 bng 20 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
 -1;
-#X floatatom 114 117 6 0 0 0 - - -;
-#X floatatom 39 270 5 0 0 0 - - -;
-#X floatatom 15 321 5 0 0 0 - - -;
-#X floatatom 52 244 5 0 0 0 - - -;
-#X floatatom 27 295 5 0 0 0 - - -;
-#X floatatom 89 168 6 0 0 0 - - -;
-#X floatatom 64 218 5 0 0 0 - - -;
-#X floatatom 101 142 5 0 0 0 - - -;
-#X floatatom 76 193 5 0 0 0 - - -;
+#X floatatom 114 117 6 0 0 0 - - -, f 6;
+#X floatatom 39 270 5 0 0 0 - - -, f 5;
+#X floatatom 15 321 5 0 0 0 - - -, f 5;
+#X floatatom 52 244 5 0 0 0 - - -, f 5;
+#X floatatom 27 295 5 0 0 0 - - -, f 5;
+#X floatatom 89 168 6 0 0 0 - - -, f 6;
+#X floatatom 64 218 5 0 0 0 - - -, f 5;
+#X floatatom 101 142 5 0 0 0 - - -, f 5;
+#X floatatom 76 193 5 0 0 0 - - -, f 5;
 #X text 92 271 number of voices currently playing;
 #X text 109 241 pitch;
 #X text 116 218 velocity;
@@ -2502,18 +2502,18 @@ a no;
 ;
 #X text 247 62 note-off for all notes currently playing;
 #X text 126 92 <--- zeroes only added to make the object larger;
-#X floatatom 238 373 5 0 0 0 - - -;
-#X floatatom 297 372 5 0 0 0 - - -;
+#X floatatom 238 373 5 0 0 0 - - -, f 5;
+#X floatatom 297 372 5 0 0 0 - - -, f 5;
 #X obj 238 347 moses 80;
-#X floatatom 63 384 5 0 0 0 - - -;
+#X floatatom 63 384 5 0 0 0 - - -, f 5;
 #X obj 64 352 moses 1;
 #X obj 113 474 - 1;
-#X obj 112 500 nbx 5 14 -1e+037 1e+037 0 0 dmy3 empty empty 0 -6 0
-10 -261681 -1 -1 0 256;
+#X obj 112 500 nbx 5 14 -1e+37 1e+37 0 0 dmy3 empty empty 0 -6 0 10
+-261681 -1 -1 0 256 0;
 #X obj 113 519 vsl 15 128 -1 1 0 0 empty empty empty 0 -8 0 8 -262144
 -1 -1 0 1;
-#X obj 303 501 nbx 5 14 -1e+037 1e+037 0 0 dmx3 empty empty 0 -6 0
-10 -225280 -1 -1 0 256;
+#X obj 303 501 nbx 5 14 -1e+37 1e+37 0 0 dmx3 empty empty 0 -6 0 10
+-225280 -1 -1 0 256 0;
 #X obj 305 522 vsl 15 128 -1 1 0 0 empty empty empty 0 -8 0 8 -262144
 -1 -1 0 1;
 #X obj 302 448 /;
@@ -2621,36 +2621,36 @@ for production test;
 #X obj 334 -337 dumpOSC 10011;
 #X obj 358 -85 OSCroute /QM_LEFT;
 #X obj 362 -216 OSCroute /QM_RIGHT;
-#X floatatom 358 -62 5 0 0 0 - - -;
-#X floatatom 362 -194 5 0 0 0 - - -;
-#X floatatom 359 -108 5 0 0 0 - - -;
+#X floatatom 358 -62 5 0 0 0 - - -, f 5;
+#X floatatom 362 -194 5 0 0 0 - - -, f 5;
+#X floatatom 359 -108 5 0 0 0 - - -, f 5;
 #X obj 359 -130 OSCroute /YPOS_LEFT;
-#X floatatom 360 -151 5 0 0 0 - - -;
+#X floatatom 360 -151 5 0 0 0 - - -, f 5;
 #X obj 361 -173 OSCroute /YPOS_RIGHT;
-#X floatatom 362 -280 5 0 0 0 - - -;
-#X floatatom 362 -236 5 0 0 0 - - -;
+#X floatatom 362 -280 5 0 0 0 - - -, f 5;
+#X floatatom 362 -236 5 0 0 0 - - -, f 5;
 #X obj 362 -301 OSCroute /QM_TOP;
 #X obj 363 -257 OSCroute /XPOS_TOP;
-#X floatatom 36 -267 5 0 0 0 - - -;
+#X floatatom 36 -267 5 0 0 0 - - -, f 5;
 #X obj 36 -292 OSCroute /QM;
-#X floatatom 197 -233 5 0 0 0 - - -;
+#X floatatom 197 -233 5 0 0 0 - - -, f 5;
 #X obj 197 -258 OSCroute /YPOS_ALL;
 #X obj 197 -213 * 2;
 #X obj 197 -190 - 1;
 #X obj 36 -203 * 2;
 #X obj 36 -178 - 1;
-#X obj 44 -130 nbx 5 14 -1e+037 1e+037 0 0 dmex1 empty empty 0 -6 0
-10 -261681 -1 -1 0 256;
-#X obj 204 -135 nbx 5 14 -1e+037 1e+037 0 0 dmey1 empty empty 0 -6
-0 10 -225280 -1 -1 0 256;
+#X obj 44 -130 nbx 5 14 -1e+37 1e+37 0 0 dmex1 empty empty 0 -6 0 10
+-261681 -1 -1 0 256 0;
+#X obj 204 -135 nbx 5 14 -1e+37 1e+37 0 0 dmey1 empty empty 0 -6 0
+10 -225280 -1 -1 0 256 0;
 #X obj 36 -108 vsl 15 128 -1 1 0 0 empty empty empty 0 -8 0 8 -262144
 -1 -1 0 1;
 #X text 218 -112 Y pos (-1 to 1);
-#X floatatom 36 -223 5 0 0 0 - - -;
+#X floatatom 36 -223 5 0 0 0 - - -, f 5;
 #N canvas 245 136 749 661 peak_decay_filter 0;
-#X floatatom 65 -93 5 0 0 0 - - -;
+#X floatatom 65 -93 5 0 0 0 - - -, f 5;
 #X obj 128 7 f;
-#X floatatom 132 64 5 0 0 0 - - -;
+#X floatatom 132 64 5 0 0 0 - - -, f 5;
 #X obj 66 8 moses;
 #X msg 128 -24 bang;
 #X obj 67 -135 inlet;
@@ -2702,26 +2702,26 @@ $f1 + $f6 + $f5 + $f4 + $f3);
 #X restore 562 -244 pd interpolate_k;
 #X obj 589 -312 loadbang;
 #X text 566 -291 sad-ang-happy-tend;
-#X floatatom 572 -219 5 0 0 0 - - -;
+#X floatatom 572 -219 5 0 0 0 - - -, f 5;
 #X msg 562 -269 255;
 #X msg 598 -269 0;
 #X msg 634 -269 54;
 #X msg 671 -269 137;
 #X obj 571 -138 loadbang;
-#X floatatom 608 -15 5 0 0 0 - - -;
-#X floatatom 562 -15 5 0 0 0 - - -;
+#X floatatom 608 -15 5 0 0 0 - - -, f 5;
+#X floatatom 562 -15 5 0 0 0 - - -, f 5;
 #X obj 562 -39 sendOSC;
 #X msg 592 -64 disconnect;
 #X msg 581 -88 typetags 0;
-#N canvas 0 0 452 302 block_equal 0;
+#N canvas 0 22 452 302 block_equal 0;
 #X obj 165 3 inlet;
 #X obj 171 151 !=;
 #X obj 185 89 f;
-#X floatatom 104 94 5 0 0 0 - - -;
-#X floatatom 193 111 5 0 0 0 - - -;
-#X floatatom 165 45 5 0 0 0 - - -;
+#X floatatom 104 94 5 0 0 0 - - -, f 5;
+#X floatatom 193 111 5 0 0 0 - - -, f 5;
+#X floatatom 165 45 5 0 0 0 - - -, f 5;
 #X obj 142 197 f;
-#X floatatom 142 221 5 0 0 0 - - -;
+#X floatatom 142 221 5 0 0 0 - - -, f 5;
 #X obj 102 247 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
 -1;
 #X obj 141 24 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
@@ -2756,18 +2756,18 @@ to eyesweb;
 #X obj 221 136 print rest;
 #X obj 6 159 s pdm_play;
 #X obj 213 160 s pdm_stop;
-#X floatatom 5 58 5 0 0 0 - - -;
+#X floatatom 5 58 5 0 0 0 - - -, f 5;
 #X obj 421 142 print trigger;
 #X obj 546 146 print rest;
 #X obj 412 170 s pdm_play;
 #X obj 546 170 s pdm_stop;
 #X obj 6 109 threshold~ 0.3 1000 0.001 1000;
-#X floatatom 393 87 5 0 0 0 - - -;
+#X floatatom 393 87 5 0 0 0 - - -, f 5;
 #X obj 5 35 mavg 30;
 #X obj 392 110 smlib/threshold 0.3 0 0.001 0;
 #X obj 44 -153 * 1;
 #X obj 204 -162 * 1;
-#X floatatom 105 -184 5 0 0 0 - - -;
+#X floatatom 105 -184 5 0 0 0 - - -, f 5;
 #X obj 106 -149 s dmvx;
 #X obj 243 -162 s dmvy;
 #X text 79 -203 overall scaling;
@@ -2848,13 +2848,13 @@ in the program Director Musices. More info in the readme file. (C)
 #X text 14 111 pDM is licensed under the terms of the GNU General Public
 License (GNU GPL) \, see the accompaning file copying.txt;
 #X restore 284 3 pd pdm_readme;
-#N canvas 0 212 435 514 2D_activity_valence_space 1;
+#N canvas 687 197 658 537 2D_activity_valence_space 1;
 #X obj 1 -30 cnv 15 430 510 empty empty empty 20 12 0 14 -233017 -66577
 0;
-#X obj 14 3 grid grid1 400 -1 1 400 -1 1 0 0.005 0.005 1 1 198 187
+#X obj 13 -2 grid grid1 400 -1 1 400 -1 1 0 0.005 0.005 1 1 17 392
 ;
 #X obj 14 403 s dmex1;
-#X obj 360 403 s dmey1;
+#X obj 356 402 s dmey1;
 #X obj 16 6 cnv 25 100 25 empty empty Tender 1 13 0 18 -9255 -261681
 0;
 #X obj 336 5 cnv 25 75 25 empty empty Happy 1 13 0 18 -9255 -261681
@@ -2865,7 +2865,7 @@ License (GNU GPL) \, see the accompaning file copying.txt;
 0;
 #X obj 130 -29 cnv 25 60 25 empty empty Activity-Valence 1 13 0 18
 -228856 -355 0;
-#N canvas 0 0 840 518 act_val_interp 0;
+#N canvas 0 22 840 518 act_val_interp 0;
 #X text 44 -58 Phrasing;
 #N canvas 229 194 560 195 interpolate_k 0;
 #X obj 20 76 expr (1.0 / 4.0) * (($f5 - $f6 - $f4 + $f3) * $f1 + $f5
@@ -3199,19 +3199,34 @@ $f1 + $f6 + $f5 + $f4 + $f3);
 #X connect 68 0 42 0;
 #X connect 69 0 39 0;
 #X restore 290 426 pd act_val_interp;
-#X text 90 406 Control scaling;
-#X obj 106 430 hsl 128 20 0 2 0 0 dmtsc1 dmtsc1 empty -2 -6 0 8 -261681
+#X text 94 405 Control scaling;
+#X obj 105 429 hsl 128 20 0 2 0 0 dmtsc1 dmtsc1 empty -2 -6 0 8 -261681
 -1 -1 6350 1;
-#X obj 55 430 nbx 4 20 -1e+037 1e+037 0 0 dmtsc1 dmtsc1 empty 0 -6
-0 10 -261681 -1 -1 1 256;
+#X obj 56 427 nbx 4 20 -1e+37 1e+37 0 0 dmtsc1 dmtsc1 empty 0 -6 0
+10 -261681 -1 -1 1 256 0;
 #X obj 106 450 hsl 128 20 0 2 0 0 dmssc1 dmssc1 empty -2 -6 0 8 -262131
--1 -1 10250 1;
-#X obj 55 450 nbx 4 20 -1e+037 1e+037 0 0 dmssc1 dmssc1 empty 0 -6
-0 10 -262131 -1 -1 1.61417 256;
-#X text 240 431 Tempo;
+-1 -1 6350 1;
+#X obj 55 450 nbx 4 20 -1e+37 1e+37 0 0 dmssc1 dmssc1 empty 0 -6 0
+10 -262131 -1 -1 1 256 0;
+#X text 241 428 Tempo;
 #X text 239 450 Sound level;
+#X obj 497 30 notein;
+#X obj 572 160 select 50;
+#X floatatom 504 99 5 0 0 0 - - -, f 5;
+#X obj 473 159 sel 48;
+#X floatatom 481 255 5 0 0 0 - - -, f 5;
+#X floatatom 555 254 5 0 0 0 - - -, f 5;
 #X connect 1 0 2 0;
 #X connect 1 1 3 0;
+#X connect 17 0 19 0;
+#X connect 18 0 22 0;
+#X connect 19 0 18 0;
+#X connect 19 0 20 0;
+#X connect 20 0 21 0;
+#X connect 21 0 2 0;
+#X connect 21 0 3 0;
+#X connect 22 0 3 0;
+#X connect 22 0 2 0;
 #X restore 219 90 pd 2D_activity_valence_space;
 #X connect 2 0 6 0;
 #X connect 3 0 6 1;

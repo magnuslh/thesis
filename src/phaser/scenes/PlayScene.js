@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-
+import EmotionController from '@/midi/EmotionController.js'
 
 export default class PlayScene extends Phaser.Scene {
   constructor() {
@@ -7,6 +7,8 @@ export default class PlayScene extends Phaser.Scene {
   }
 
   create() {
+    this.emotions = new EmotionController();
+    
     this.add.image(400, 300, 'sky');
 
 		
@@ -20,8 +22,16 @@ export default class PlayScene extends Phaser.Scene {
 	
 		console.log(this.cursors)
 		this.player = this.physics.add.sprite(200, 200, 'bomb')
-		this.player.setCollideWorldBounds(true)
-    
+    this.player.setCollideWorldBounds(true)
+   
+    this.platforms = this.physics.add.staticGroup();
+    this.platforms.create(400, 568, 'ground').setScale(2).refreshBody();
+    this.platforms.create(600, 400, 'ground');
+    this.platforms.create(50, 250, 'ground');
+    this.platforms.create(750, 220, 'ground');
+
+
+    this.physics.add.collider(this.player, this.platforms);
 
     this.sound.add('thud');
     this.physics.world.on('worldbounds', () => {
@@ -34,6 +44,7 @@ export default class PlayScene extends Phaser.Scene {
 		let player = this.player;
     if (cursors.left.isDown) // if the left arrow key is down
     {
+        
         player.body.setVelocityX(-200); // move left
     }
     else if (cursors.right.isDown) // if the right arrow key is down
@@ -42,10 +53,17 @@ export default class PlayScene extends Phaser.Scene {
 		}
 		else {
 			player.body.setVelocityX(0);
-		}  
+    }  
+    if(!player.body.onFloor()){
+      this.emotions.sendSad();
+    }
+    if(player.body.onFloor()){
+      this.emotions.sendHappy();
+    }
     if (( cursors.space.isDown || cursors.up.isDown) && player.body.onFloor())
     {
-        player.body.setVelocityY(-500); // jump up
+      
+      player.body.setVelocityY(-500); // jump up
     }
   }
 }
