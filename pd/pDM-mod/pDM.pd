@@ -1,13 +1,13 @@
-#N canvas 608 446 690 234 12;
+#N canvas 187 366 690 257 12;
 #X obj -28 32 cnv 15 230 145 empty empty Control 7 10 0 18 -228856
 -4160 0;
 #X obj -20 149 nbx 5 14 -1e+37 1e+37 0 0 empty empty Bar 10 -6 0 10
--228856 -1 -1 21 256 0;
+-228856 -1 -1 45 256 0;
 #X obj -20 74 bng 40 250 50 0 empty pdm_play Play 0 -6 0 12 -24198
 -1 -1;
 #X obj 31 74 bng 40 250 50 0 empty pdm_stop Stop 0 -6 0 12 -258699
 -1 -1;
-#X obj 81 74 tgl 40 0 empty empty Repeat 0 -6 0 12 -191407 -1 -1 1
+#X obj 81 74 tgl 40 0 empty empty Repeat 0 -6 0 12 -191407 -1 -1 0
 1;
 #X obj 133 74 bng 40 250 50 0 empty empty Open(.pdm) -5 -6 0 12 -191407
 -1 -1;
@@ -1401,9 +1401,9 @@ Roland-PMA5 Technics-SX-P30;
 #X obj 362 235 nbx 4 20 -1e+37 1e+37 0 0 dmt9 dmk9 empty 0 -6 0 10
 -261681 -1 -1 1.8 256 0;
 #X obj 50 503 hsl 128 20 0.5 2 0 0 dmtsc dmtsc empty -2 -6 0 8 -261681
--1 -1 5080 1;
+-1 -1 4295 1;
 #X obj -1 503 nbx 4 20 -1e+37 1e+37 0 0 dmtsc dmtsc empty 0 -6 0 10
--261681 -1 -1 1.1 256 0;
+-261681 -1 -1 1.00725 256 0;
 #X obj 50 523 hsl 128 20 -10 10 0 0 dmssc dmssc empty -2 -6 0 8 -262131
 -1 -1 8255 1;
 #X obj -1 523 nbx 4 20 -1e+37 1e+37 0 0 dmssc dmssc empty 0 -6 0 10
@@ -3200,10 +3200,10 @@ $f1 + $f6 + $f5 + $f4 + $f3);
 #X connect 69 0 39 0;
 #X restore 290 426 pd act_val_interp;
 #X text 94 405 Control scaling;
-#X obj 105 429 hsl 128 20 0 2 0 0 dmtsc1 dmtsc1 empty -2 -6 0 8 -261681
--1 -1 6350 1;
+#X obj 106 428 hsl 128 20 0 2 0 0 dmtsc1 dmtsc1 empty -2 -6 0 8 -261681
+-1 -1 2350 1;
 #X obj 56 427 nbx 4 20 -1e+37 1e+37 0 0 dmtsc1 dmtsc1 empty 0 -6 0
-10 -261681 -1 -1 1 256 0;
+10 -261681 -1 -1 0.370079 256 0;
 #X obj 106 450 hsl 128 20 0 2 0 0 dmssc1 dmssc1 empty -2 -6 0 8 -262131
 -1 -1 6350 1;
 #X obj 55 450 nbx 4 20 -1e+37 1e+37 0 0 dmssc1 dmssc1 empty 0 -6 0
@@ -3214,19 +3214,21 @@ $f1 + $f6 + $f5 + $f4 + $f3);
 #X obj 572 160 select 50;
 #X floatatom 504 99 5 0 0 0 - - -, f 5;
 #X obj 473 159 sel 48;
-#X floatatom 481 255 5 0 0 0 - - -, f 5;
-#X floatatom 555 254 5 0 0 0 - - -, f 5;
+#X obj 569 70 print;
+#X msg 479 251 -1;
+#X msg 552 248 1;
 #X connect 1 0 2 0;
 #X connect 1 1 3 0;
 #X connect 17 0 19 0;
-#X connect 18 0 22 0;
+#X connect 17 0 21 0;
+#X connect 18 0 23 0;
 #X connect 19 0 18 0;
 #X connect 19 0 20 0;
-#X connect 20 0 21 0;
-#X connect 21 0 2 0;
-#X connect 21 0 3 0;
-#X connect 22 0 3 0;
+#X connect 20 0 22 0;
 #X connect 22 0 2 0;
+#X connect 22 0 3 0;
+#X connect 23 0 2 0;
+#X connect 23 0 3 0;
 #X restore 219 90 pd 2D_activity_valence_space;
 #X connect 2 0 6 0;
 #X connect 3 0 6 1;

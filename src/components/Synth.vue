@@ -30,8 +30,8 @@ export default {
   data() {
     return {
         params:{
-            harmonicity : 3,
-            modulationIndex : 10,
+            harmonicity : 0,
+            modulationIndex : 0,
             detune : 0,
             oscillator : {
                 type : 'sine'
