@@ -1,5 +1,7 @@
 import Phaser from 'phaser';
-import EmotionController from '@/midi/EmotionController.js'
+import MusicController from '@/midi/MusicController.js'
+import Player from '@/phaser/objects/Player.js'
+import Enemy from '@/phaser/objects/Enemy.js';
 
 export default class PlayScene extends Phaser.Scene {
   constructor() {
@@ -7,140 +9,103 @@ export default class PlayScene extends Phaser.Scene {
   }
 
   create() {
-    this.emotions = new EmotionController();
-    
-    this.add.image(400, 300, 'sky');
 
-		
-		this.cursors = this.input.keyboard.addKeys({ 
-			up: Phaser.Input.Keyboard.KeyCodes.W, 
-			left:Phaser.Input.Keyboard.KeyCodes.A, 
-			right:Phaser.Input.Keyboard.KeyCodes.D, 
-      down: Phaser.Input.Keyboard.KeyCodes.S,
-      attack: Phaser.Input.Keyboard.KeyCodes.E,
-			space: Phaser.Input.Keyboard.KeyCodes.SPACE
-		});
-	
-		console.log(this.cursors)
-		this.player = this.physics.add.sprite(200, 200, 'player')
-    this.player.setCollideWorldBounds(true)
+    this.musicController = new MusicController();
     
 
+    this.graphics = this.add.graphics({ lineStyle: { width: 4, color: 0xaa00aa } })
 
-    this.anims.create({
-      key: 'idle',
-      frames: this.anims.generateFrameNumbers('player', { start: 0, end: 3 }),
-      frameRate: 10,
-      repeat: -1
-    });
+    this.map = this.add.tilemap('map', 32, 32);
 
-    this.anims.create({
-      key: 'left',
-      frames: this.anims.generateFrameNumbers('player', { start: 8, end: 15 }),
-      frameRate: 10,
-      repeat: -1
-    });
-    this.anims.create({
-      key: 'right',
-      frames: this.anims.generateFrameNumbers('player', { start: 8, end: 15 }),
-      frameRate: 10,
-      repeat: -1
-     });
-     this.anims.create({
-      key: 'jump',
-      frames: [ { key: 'player', frame: 16 } ],
-      frameRate: 10
-     });
-
-     this.anims.create({
-      key: 'attack',
-      frames: this.anims.generateFrameNumbers('player', { start: 44, end: 58 }),
-      frameRate: 10,
-      repeat: 0
-     });
-   
-
-    this.anims.create({
-      key: 'somersault',
-      frames: this.anims.generateFrameNumbers('player', { start: 18, end: 21 }),
-      frameRate: 10,
-      repeat: 0
-    });
-    this.anims.create({
-      key: 'falling',
-      frames: this.anims.generateFrameNumbers('player', { start: 22, end: 23 }),
-      frameRate: 10,
-      repeat: 1,
-    });
-  
+    const tiles = this.map.addTilesetImage("tiles");
+    this.layer = this.map.createStaticLayer("Tile Layer 1", tiles, 0,0);
   
    
+    this.layer.setCollision([2])
 
-   
-    this.platforms = this.physics.add.staticGroup();
-    this.platforms.create(400, 568, 'ground').setScale(2).refreshBody();
-    this.platforms.create(600, 400, 'ground');
-    this.platforms.create(50, 250, 'ground');
-    this.platforms.create(750, 220, 'ground');
+  
+    
+    //this.add.image(400, 300, 'sky');
 
 
-    this.physics.add.collider(this.player, this.platforms);
+    //this.platforms = this.physics.add.staticGroup();
+    // this.platforms.create(400, 568, 'ground').setScale(2).refreshBody();
+    // this.platforms.create(600, 400, 'ground');
+    // this.platforms.create(50, 250, 'ground');
+    // this.platforms.create(750, 220, 'ground');
+
+
+    this.player = new Player(this, 200,200, 'player')
+    
+    this.enemy = new Enemy(this, 600, 500, 'bomb');
+
+    this.physics.add.collider(this.player, this.layer);
+    this.physics.add.collider(this.enemy, this.layer);
+
+    this.physics.add.overlap(this.player, this.enemy, this.touchEnemy, null, this);
+
+
+
+    this.lives = this.add.group();
+    for(let i = 0; i< this.player.health; i++){
+      this.lives.create(180-64 *i, 32, 'heart')
+    }
+    
 
     this.sound.add('thud');
     this.physics.world.on('worldbounds', () => {
       this.sound.play('thud', {volume: 0.75});
     });
+
+    this.keys = this.input.keyboard.addKeys({ 
+			up: Phaser.Input.Keyboard.KeyCodes.W, 
+			left:Phaser.Input.Keyboard.KeyCodes.A, 
+			right:Phaser.Input.Keyboard.KeyCodes.D, 
+      down: Phaser.Input.Keyboard.KeyCodes.S,
+      attack: Phaser.Input.Keyboard.KeyCodes.E,
+      ctrl: Phaser.Input.Keyboard.KeyCodes.CTRL,
+			space: Phaser.Input.Keyboard.KeyCodes.SPACE
+    });
   }
 
-  update() {
-		let cursors = this.cursors;
-    let player = this.player;
+  touchEnemy ()
+  {
     
-    
-    if (cursors.left.isDown) // if the left arrow key is down
-    {
-      player.flipX = true; 
-        player.body.setVelocityX(-200); // move left
-        player.anims.play('left', true);
-    }
-    else if (cursors.right.isDown) // if the right arrow key is down
-    {
-      player.flipX = false;
-      player.body.setVelocityX(200); // move right
-      player.anims.play('right', true);
-		}
-		else{
-      player.body.setVelocityX(0);
+    if(this.player.hurtable){
+      this.player.setTint(0xff0000);
+      this.musicController.setValence(-1)
+      this.player.health -= 1; 
+      let life = this.lives.getFirstAlive();
+  
+      if(life){
+        life.destroy(); 
+      }
+      this.player.hurtable = false; 
       
-    }  
-   
-    if(!player.body.onFloor()){
-      this.emotions.sendSad();
-      if(player.body.velocity.y<-50){
-        player.anims.play('jump', true)
+      if(this.player.health <= 0){
+          this.physics.pause(); 
+          
+          this.gameOver = true;
       }
-      else if(Math.abs(player.body.velocity.y < 50)){
-        player.anims.play('somersault', true)
-      }
+
       else {
-        player.anims.play('falling', true)
+        setTimeout(() => {
+          this.player.clearTint(); 
+          this.player.hurtable = true; 
+        }, 3000) 
       }
+
+    }
      
       
-    }
-    if (cursors.attack.isDown){
-      player.anims.play('attack', true);
-    }
-  
-    else if(player.body.onFloor() && player.body.velocity.x == 0){
-      this.emotions.sendHappy();
-      player.anims.play('idle', true);
-    }
-   
-    if (( cursors.space.isDown || cursors.up.isDown) && player.body.onFloor())
-    {
-      player.body.setVelocityY(-300); // jump up
-      player.anims.play('jump', true);
-    }
   }
+
+
+  update() {
+    this.player.update(this.keys)
+    this.enemy.update(); 
+    //this.musicController.sendNotes(); 
+   
+  }
+
 }

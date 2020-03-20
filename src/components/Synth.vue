@@ -1,14 +1,21 @@
 <template>
 	<div>
 		Synth: 
-        <button @click="testSynth" > 
+        <button @click="stopSynth" > 
+            stop
+        </button>
+         <button @click="testSynth" > 
             test
         </button>
         Harmonocity: <input type="range" min="0" max="10" step="0.1" v-model="params.harmonicity" class="slider" v-on:change="changeParam('harmonicity', params.harmonicity)"/>
         ModulationIndex: <input type="range" min="0" max="100" step="1" v-model="params.modulationIndex" class="slider" v-on:change="changeParam('modulationIndex', params.modulationIndex)"/>
         Detune: <input type="range" min="0" max="2" step="0.1" v-model="params.detune" class="slider" v-on:change="changeParam('detune', params.detune)"/>
-        Oscillator: <Oscillator  @param="changeMainOscillator"/>
-        Modulation Oscillator: <Oscillator @param="changeModulationOscillator"/>
+        <div>
+             Main Oscillator: <Oscillator  @param="changeMainOscillator"/>
+        </div>
+	    <div>
+            Modulation Oscillator: <Oscillator @param="changeModulationOscillator"/>
+        </div>
 	</div>
 </template>
 <script>
@@ -65,34 +72,38 @@ export default {
                 console.log("WebMidi could not be enabled.", err);
             }
 
-            const synth = new Tone.PolySynth( 8, Tone.FMSynth, this.params).toMaster();
+            const synth = new Tone.PolySynth( 10, Tone.FMSynth, this.params).toMaster();
+            
             this.synth = synth;
+            
         
-
+            
             console.log(WebMidi.inputs)
             const input = WebMidi.inputs[0];//find(i => i.name == "loopMIDI");
             input.addListener('noteon', "all", (e) => {
-                console.log("Received 'noteon' message (" + e.note.name + e.note.octave + ").");
-                synth.triggerAttack(e.note.name + e.note.octave)
-                }
-            );
+              
+                //console.log("Received 'noteon' message (" + e.note.name + e.note.octave + ").");
+                synth.triggerAttack(e.note.name + e.note.octave, "+0.2", e.velocity)
+            });
             input.addListener('noteoff', "all", (e) => {
-                console.log("Received 'noteoff' message (" + e.note.name + e.note.octave + ").");
-                synth.triggerRelease(e.note.name + e.note.octave)
-            }
-            );
+                //console.log("Received 'noteoff' message (" + e.note.name + e.note.octave + ").");
+                synth.triggerRelease(e.note.name + e.note.octave, "+0.2")
+            });
 
 
         })
-
-       
        
        
    },
 
+   destroy(){
+       
+   },
+
+
   methods: {
 		stopSynth(){
-            this.synth.triggerRelease();
+            this.synth.releaseAll();
         },
         testSynth(){
             this.synth.triggerAttackRelease("C4", "8n");
