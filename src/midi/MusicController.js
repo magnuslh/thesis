@@ -190,6 +190,37 @@ export default class EmotionController {
         //     this.sendValence(); 
         // }
     }
+    setVelocity(amount){
+        
+        if (amount > 1){
+            amount = 1; 
+        }
+        else if (amount < 0.1){
+            amount = 0.1; 
+        }
+        if(this.velocity ==  amount){
+            return 
+        }
+
+        this.velocity = amount; 
+        //this.sendValence(); 
+        //console.log("Valence: " + this.valence)
+        //amount should be the intended amount, but i will smooth it in this function
+    
+        // if(Math.abs(this.valence) <= Math.abs(amount) && Math.abs(this.valence) >= 0) {
+            
+        //     let dist = amount - this.valence;
+        //     let inc = dist/10; 
+        //     this.valence += inc;  
+        //     if(this.valence > 1){
+        //         this.valence = 1; 
+        //     }
+        //     else if(this.valence < -1){
+        //         this.valence = -1;
+        //     }
+        //     this.sendValence(); 
+        // }
+    }
  
    
 }

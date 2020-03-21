@@ -27,6 +27,8 @@ export default class Player extends Phaser.GameObjects.Sprite{
 
 
     update(keys){
+
+        this.scene.musicController.setVelocity(0.5)
        
         if (keys.left.isDown) // if the left arrow key is down
         {
@@ -66,9 +68,9 @@ export default class Player extends Phaser.GameObjects.Sprite{
         }  
 
         
+       
+        
         this.scene.musicController.setValence(this.health  -2) //0.5, 0, -0.5
-        
-        
       
         
          //player in the air
@@ -80,9 +82,10 @@ export default class Player extends Phaser.GameObjects.Sprite{
                 this.scene.musicController.setEnergy(1)
             }
             else{
-                let speed = -1 + Math.abs(this.body.velocity.y/240) ; 
+                let speed = -1 + Math.abs(this.body.velocity.y/320) ; 
                 
-                this.scene.musicController.setEnergy(speed)
+                this.scene.musicController.setEnergy(speed);
+                this.scene.musicController.setVelocity(speed+1)
             }
           
             
@@ -123,6 +126,10 @@ export default class Player extends Phaser.GameObjects.Sprite{
             }
             if(this.landed){
                 this.scene.musicController.setEnergy(1); 
+            }
+            else if(this.state=="crouch"){
+                this.scene.musicController.setEnergy(-0.5); 
+                this.scene.musicController.setValence(-1)
             }
             else{
                 this.scene.musicController.setEnergy(-0.5+ Math.abs(this.body.velocity.x/(180) )); 
