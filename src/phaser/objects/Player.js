@@ -35,7 +35,7 @@ export default class Player extends Phaser.GameObjects.Sprite{
             this.flipX = true; 
             if(keys.ctrl.isDown  || keys.down.isDown){
                 this.state = "crouch"
-                this.body.setVelocityX(-30)
+								this.body.setVelocityX(-30)
                 this.anims.play('crouch-walk', true);
             }
             else{
@@ -79,13 +79,16 @@ export default class Player extends Phaser.GameObjects.Sprite{
 
             let tileBelow = this.scene.map.getTileAtWorldXY(this.x, this.y + 50); 
             if(tileBelow.canCollide && this.body.velocity.y >0){
-                this.scene.musicController.setEnergy(1)
+								this.scene.musicController.setEnergy(0.8)
+								this.scene.musicController.setVelocity(0.8)
+								
             }
             else{
                 let speed = -1 + Math.abs(this.body.velocity.y/320) ; 
                 
-                this.scene.musicController.setEnergy(speed);
-                this.scene.musicController.setVelocity(speed+1)
+								this.scene.musicController.setEnergy(speed);
+								this.scene.musicController.setValence(-0.8)
+                this.scene.musicController.setVelocity(speed+1.2)
             }
           
             
@@ -96,7 +99,7 @@ export default class Player extends Phaser.GameObjects.Sprite{
                 this.anims.play('jump', true)
             }
             else if(this.body.velocity.y < 0){
-               
+								
                 this.anims.play('jumptop', true)
             }
             else if(this.body.velocity.y <50){
@@ -121,18 +124,20 @@ export default class Player extends Phaser.GameObjects.Sprite{
 
                 setTimeout(()=>{
                     
-                    this.landed = false; 
+                    this.landed = false;
                 }, 250)
             }
             if(this.landed){
-                this.scene.musicController.setEnergy(1); 
+								this.scene.musicController.setEnergy(0.8); 
+								this.scene.musicController.setVelocity(0.8);
             }
             else if(this.state=="crouch"){
-                this.scene.musicController.setEnergy(-0.5); 
-                this.scene.musicController.setValence(-1)
+                this.scene.musicController.setEnergy(-1); 
+								this.scene.musicController.setValence(-0.8)
+								this.scene.musicController.setVelocity(0.2);
             }
             else{
-                this.scene.musicController.setEnergy(-0.5+ Math.abs(this.body.velocity.x/(180) )); 
+                this.scene.musicController.setEnergy(-0.5+ Math.abs(this.body.velocity.x/(360) )); //RUNNING
             }
             
             
