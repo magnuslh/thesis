@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import Sword from './Sword';
 
 
 export default class Player extends Phaser.GameObjects.Sprite{
@@ -7,26 +8,32 @@ export default class Player extends Phaser.GameObjects.Sprite{
         super(scene, x, y);
         scene.physics.world.enable(this);
         scene.add.existing(this);
-        this.body.setSize(25, 37)
-        this.body.setOffset(11,0)
+        this.body.setSize(20, 32)
+        this.body.setOffset(15,5)
         this.type = 'player'
         this.alive = true;
         this.body.setMaxVelocity(180, 400);
         this.body.setDragX(500) 
         this.body.setCollideWorldBounds(true);
         
-        
+        this.scale = 1.5; 
         this.health = 3;
         this.hurtable = true; 
         this.landed = false; 
         this.chased = false; 
-        this.state = 'idle'; 
-        
-        
+				this.state = 'idle';
+				this.sword = null;  
+		
     }
 
 
     update(keys){
+
+				if(this.sword && this.state !== "attack"){
+					
+					this.sword.destroy(); 
+					this.sword = null;
+				}
 
         this.scene.musicController.setVelocity(0.5)
        
@@ -145,7 +152,12 @@ export default class Player extends Phaser.GameObjects.Sprite{
            
             if(Math.abs(this.body.velocity.x) <= 20){
                 if (keys.attack.isDown){
-                    this.state = 'attack'; 
+										this.state = 'attack'; 
+										if(!this.sword){
+											let offset = this.flipX?-25:25
+											this.sword = new Sword(this.scene, this.x + offset, this.y)
+									
+										}
                     this.anims.play('attack', true);
                 }
                 else if(keys.ctrl.isDown || keys.down.isDown){
