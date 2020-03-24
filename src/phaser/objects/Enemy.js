@@ -6,31 +6,64 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
         scene.add.existing(this);
         this.alive = true;
         this.player = this.scene.player; 
-        this.type = 'bomb'
-       
+        this.type = 'wizard'
+				this.body.setSize(60, 80)
+				this.body.setOffset(10, 0)
+				
         this.texture = texture
         this.body.setCollideWorldBounds(true);
-        this.player = scene.player; 
-        this.speed = 25
+				this.acceleration = 60
+				this.body.setDragX(60) 
+				this.body.setMaxVelocity(30, 0);
+				this.state = "idle"
     }
 
     update(){
-        if(this.player.y > 500 && this.player.body.onFloor() && this.player.state != 'crouch'){
+		
+				if(Math.abs(this.body.velocity.x) <= 5){
+					this.anims.play("wizard-idle", true)
+				}
+				else if(Math.abs(this.body.velocity.x) < Math.abs(this.body.maxVelocity.x) ){
+					if(this.state == "chase"){
+						this.anims.play("wizard-fly-start", true)
+					}
+					else{
+						this.anims.playReverse("wizard-fly-start", true)
+					}
+					
+				}
+				else{
+					this.anims.play("wizard-fly", true)
+				}
+				if(this.state !== "die" || this.state !== "dead"){
+					if(this.player.y > 500 && this.player.body.onFloor() && this.player.state != 'crouch'){
+						this.state = "chase"
             let distance = 100/Math.abs(this.player.x - this.x);
-          
+
             this.scene.musicController.setValence(-distance); 
             this.scene.musicController.setEnergy(distance)
             if(this.player.x < this.x){
-                this.body.setVelocityX(-this.speed)
+								this.flipX = false; 
+                this.body.setAccelerationX(-this.acceleration)
             }
             else{
-                this.body.setVelocityX(this.speed)
+								this.flipX = true
+                this.body.setAccelerationX(this.acceleration)
             }
                 
-        }
-        else{
-            
-            this.body.setVelocityX(0); 
-        }
-    }  
+					}
+					else{
+							this.state = "idle"
+							this.body.setAccelerationX(0); 
+					}
+				}
+       
+		} 
+		die(){
+			this.state = "dead";
+			this.body.checkCollision.none = true; 
+			this.body.setAccelerationX(0); 
+			this.anims.play("wizard-death", true)
+			
+		}
 }

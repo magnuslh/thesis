@@ -8,6 +8,10 @@ import map from '@/phaser/assets/tilemap.json'
 import player from '@/phaser/assets/Adventurer/adventurer-Sheet.png';
 import playerHC from '@/phaser/assets/Adventurer/adventurer-hand-combat-Sheet.png';
 import heart from '@/phaser/assets/heart.png';
+import black from '@/phaser/assets/black-cube.png';
+import wizardIdle from '@/phaser/assets/Wizard/wizard-idle.png';
+import wizardFly from '@/phaser/assets/Wizard/wizard-fly.png';
+import wizardDeath from '@/phaser/assets/Wizard/wizard-death.png';
 
 export default class BootScene extends Scene {
   constructor() {
@@ -15,7 +19,8 @@ export default class BootScene extends Scene {
   }
 
   preload() {
-    this.load.image('tiles', tiles);
+		this.load.image('tiles', tiles);
+		this.load.image('door', black);
     this.load.image('sky', sky);
     this.load.image('bomb', bomb);
     this.load.image('heart', heart);
@@ -28,7 +33,19 @@ export default class BootScene extends Scene {
     this.load.spritesheet('playerHC', 
         playerHC,
         { frameWidth: 50, frameHeight: 37 }
-    );
+		);
+		this.load.spritesheet('wizard-idle', 
+        wizardIdle,
+        { frameWidth: 80, frameHeight: 80 }
+		);
+		this.load.spritesheet('wizard-fly', 
+			wizardFly,
+			{ frameWidth: 80, frameHeight: 80 }
+		);
+		this.load.spritesheet('wizard-death', 
+			wizardDeath,
+			{ frameWidth: 80, frameHeight: 80 }
+		);
     
     
   }
@@ -98,7 +115,40 @@ export default class BootScene extends Scene {
       frames: this.anims.generateFrameNumbers('player', { start: 22, end: 23 }),
       frameRate: 10,
       repeat: 1,
-    });
+		});
+		
+
+		this.anims.create({
+			key: 'wizard-idle',
+      frames: this.anims.generateFrameNumbers('wizard-idle'),
+			frameRate: 10,
+			yoyo:true,
+      repeat: -1
+		})
+		this.anims.create({
+			key: 'wizard-fly-start',
+      frames: this.anims.generateFrameNumbers('wizard-fly',  { start: 0, end: 3 }),
+			frameRate: 10,
+			repeat: 0
+		})
+		this.anims.create({
+			key: 'wizard-fly',
+      frames: this.anims.generateFrameNumbers('wizard-fly', { start: 4, end: 5 } ),
+			frameRate: 5,
+      repeat: -1
+		})
+		this.anims.create({
+			key: 'wizard-death',
+      frames: this.anims.generateFrameNumbers('wizard-death'),
+			frameRate: 10,
+      repeat: 0
+		})
+		this.anims.create({
+			key: 'wizard-dead',
+      frames: this.anims.generateFrameNumbers('wizard-death',{ start: 9, end: 9 }),
+			frameRate: 10,
+      repeat: 0
+		})
 
     
     this.scene.start('PlayScene');

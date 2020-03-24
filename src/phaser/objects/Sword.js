@@ -18,6 +18,6 @@ export default class Sword extends Phaser.GameObjects.Sprite {
 		
 	hitEnemy(){
 		
-		this.scene.enemy.destroy(); 
+		this.scene.enemy.die(); 
 	}
 }

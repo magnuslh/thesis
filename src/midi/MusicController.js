@@ -81,7 +81,7 @@ export default class EmotionController {
          
 					
 						//this.synth = new Tone.PolySynth( 10, Tone.FMSynth, this.params).toMaster();
-						let limiter = new Tone.Limiter(-6).toMaster();
+						let limiter = new Tone.Limiter(-12).toMaster();
 						let reverb = new Tone.Reverb(1).toMaster();
 						reverb.generate();
 						let filter = new Tone.Filter(200, 'highpass').toMaster();
@@ -117,32 +117,16 @@ export default class EmotionController {
               
             }, 
                 this.setListeners()
-            ).chain( filter, reverb, limiter, Tone.Master)
-						
-						
-					
-        
-            
-            
-        
-        })
-        
-        
-
-     
+            ).chain( filter, reverb, limiter, Tone.Master);
+        })  
 		}
 		
-	
 
     setListeners(){
-		
-
 				this.input = WebMidi.inputs[1];//find(i => i.name == "loopMIDI"); //mac 1
 				console.log(WebMidi.inputs)
 				
         this.input.addListener('noteon', "all", (e) => {
-				
-            
             //this.nextNote = e; 
             //console.log("Received 'noteon' message (" + e.note.name + e.note.octave + ").");
             this.sampler.triggerAttack(e.note.name + e.note.octave, "+" + this.delay, e.velocity*this.velocity)

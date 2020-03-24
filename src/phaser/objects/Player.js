@@ -9,7 +9,7 @@ export default class Player extends Phaser.GameObjects.Sprite{
         scene.physics.world.enable(this);
         scene.add.existing(this);
         this.body.setSize(20, 32)
-        this.body.setOffset(15,5)
+        this.body.setOffset(15,4)
         this.type = 'player'
         this.alive = true;
         this.body.setMaxVelocity(180, 400);
@@ -20,7 +20,6 @@ export default class Player extends Phaser.GameObjects.Sprite{
         this.health = 3;
         this.hurtable = true; 
         this.landed = false; 
-        this.chased = false; 
 				this.state = 'idle';
 				this.sword = null;  
 		
@@ -77,7 +76,8 @@ export default class Player extends Phaser.GameObjects.Sprite{
         
        
         
-        this.scene.musicController.setValence(this.health  -2) //0.5, 0, -0.5
+				this.scene.musicController.setValence(this.health  -2) //0.5, 0, -0.5
+				this.scene.musicController.setVelocity(0.25*this.health)
       
         
          //player in the air
@@ -86,16 +86,17 @@ export default class Player extends Phaser.GameObjects.Sprite{
 
             let tileBelow = this.scene.map.getTileAtWorldXY(this.x, this.y + 50); 
             if(tileBelow.canCollide && this.body.velocity.y >0){
-								this.scene.musicController.setEnergy(0.8)
+								this.scene.musicController.setEnergy(0.3)
 								this.scene.musicController.setVelocity(0.8)
+								console.log("cancollide")
 								
             }
             else{
-                let speed = -1 + Math.abs(this.body.velocity.y/320) ; 
+                let speed = -0.8 + Math.abs(this.body.velocity.y/640) ; 
                 
 								this.scene.musicController.setEnergy(speed);
 								this.scene.musicController.setValence(-0.8)
-                this.scene.musicController.setVelocity(speed+1.2)
+                this.scene.musicController.setVelocity(speed + 1)
             }
           
             
@@ -135,8 +136,8 @@ export default class Player extends Phaser.GameObjects.Sprite{
                 }, 250)
             }
             if(this.landed){
-								this.scene.musicController.setEnergy(0.8); 
-								this.scene.musicController.setVelocity(0.8);
+								this.scene.musicController.setEnergy(0); 
+								this.scene.musicController.setVelocity(0.7);
             }
             else if(this.state=="crouch"){
                 this.scene.musicController.setEnergy(-1); 
