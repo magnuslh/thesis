@@ -65,7 +65,7 @@ export default class EmotionController {
             if (err) {
                 console.log("WebMidi could not be enabled.", err);
             }
-            this.output = WebMidi.outputs[0]; //mac 0
+            this.output = WebMidi.outputs[1]; //mac 1
             this.energy = 0;
             this.valence = 0; 
             this.velocity = 0.5; 
@@ -123,7 +123,7 @@ export default class EmotionController {
 		
 
     setListeners(){
-				this.input = WebMidi.inputs[1];//find(i => i.name == "loopMIDI"); //mac 1
+				this.input = WebMidi.inputs[0];//find(i => i.name == "loopMIDI"); //mac 0
 				console.log(WebMidi.inputs)
 				
         this.input.addListener('noteon', "all", (e) => {

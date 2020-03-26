@@ -20,28 +20,30 @@ export default class Player extends Phaser.GameObjects.Sprite{
         this.health = 3;
         this.hurtable = true; 
         this.landed = false; 
-				this.state = 'idle';
-				this.sword = null;  
+        this.state = 'idle';
+        this.sword = null;  
 		
     }
 
 
-    update(keys){
+    update(keys, musicParams){
 
-				if(this.sword && this.state !== "attack"){
-					
-					this.sword.destroy(); 
-					this.sword = null;
-				}
+        musicParams.velocity = 0.2*this.health; 
 
-        this.scene.musicController.setVelocity(0.5)
+        if(this.sword && this.state !== "attack"){
+            
+            this.sword.destroy(); 
+            this.sword = null;
+        }
+
+        // this.scene.musicController.setVelocity(0.5)
        
         if (keys.left.isDown) // if the left arrow key is down
         {
             this.flipX = true; 
             if(keys.ctrl.isDown  || keys.down.isDown){
                 this.state = "crouch"
-								this.body.setVelocityX(-30)
+                this.body.setVelocityX(-30)
                 this.anims.play('crouch-walk', true);
             }
             else{
@@ -76,8 +78,8 @@ export default class Player extends Phaser.GameObjects.Sprite{
         
        
         
-				this.scene.musicController.setValence(this.health  -2) //0.5, 0, -0.5
-				this.scene.musicController.setVelocity(0.25*this.health)
+        musicParams.valence= (this.health  -2) / 2; 
+        
       
         
          //player in the air
@@ -86,17 +88,17 @@ export default class Player extends Phaser.GameObjects.Sprite{
 
             let tileBelow = this.scene.map.getTileAtWorldXY(this.x, this.y + 50); 
             if(tileBelow.canCollide && this.body.velocity.y >0){
-								this.scene.musicController.setEnergy(0.3)
-								this.scene.musicController.setVelocity(0.8)
-								console.log("cancollide")
+                musicParams.energy = 0; 
+                musicParams.velocity += 0.3;//this.scene.musicController.setVelocity(0.8)
+           
 								
             }
             else{
-                let speed = -0.8 + Math.abs(this.body.velocity.y/640) ; 
+                let speed = -0.8 + Math.abs(this.body.velocity.y/450) ; 
                 
-								this.scene.musicController.setEnergy(speed);
-								this.scene.musicController.setValence(-0.8)
-                this.scene.musicController.setVelocity(speed + 1)
+                musicParams.energy = speed; 
+                musicParams.valence = musicParams.valence + speed;
+                musicParams.velocity += speed*this.health/6; ///this.scene.musicController.setVelocity(0.25*this.health+speed /3)
             }
           
             
@@ -136,16 +138,16 @@ export default class Player extends Phaser.GameObjects.Sprite{
                 }, 250)
             }
             if(this.landed){
-								this.scene.musicController.setEnergy(0); 
-								this.scene.musicController.setVelocity(0.7);
+                musicParams.energy = 0; //this.scene.musicController.setEnergy(0); 
+                musicParams.velocity +=0.2; //this.scene.musicController.setVelocity(0.7);
             }
             else if(this.state=="crouch"){
-                this.scene.musicController.setEnergy(-1); 
-								this.scene.musicController.setValence(-0.8)
-								this.scene.musicController.setVelocity(0.2);
+                musicParams.energy = -1; //this.scene.musicController.setEnergy(-1); 
+                musicParams.valence = 0; //this.scene.musicController.setValence(-0.8)
+                musicParams.velocity -= 0.2; //this.scene.musicController.setVelocity(0.2);
             }
             else{
-                this.scene.musicController.setEnergy(-0.5+ Math.abs(this.body.velocity.x/(360) )); //RUNNING
+                musicParams.energy = this.health/6 - 0.5+ Math.abs(this.body.velocity.x/360); //this.scene.musicController.setEnergy(-0.5+ Math.abs(this.body.velocity.x/(360) )); //RUNNING
             }
             
             
@@ -153,12 +155,15 @@ export default class Player extends Phaser.GameObjects.Sprite{
            
             if(Math.abs(this.body.velocity.x) <= 20){
                 if (keys.attack.isDown){
-										this.state = 'attack'; 
-										if(!this.sword){
-											let offset = this.flipX?-25:25
-											this.sword = new Sword(this.scene, this.x + offset, this.y)
-									
-										}
+                    this.state = 'attack'; 
+                    musicParams.velocity = 0.8
+                    musicParams.energy = 0.5
+                    musicParams.valence = -1
+                    if(!this.sword){
+                        let offset = this.flipX?-25:25
+                        this.sword = new Sword(this.scene, this.x + offset, this.y)
+                
+                    }
                     this.anims.play('attack', true);
                 }
                 else if(keys.ctrl.isDown || keys.down.isDown){
@@ -185,5 +190,7 @@ export default class Player extends Phaser.GameObjects.Sprite{
         this.body.setVelocityY(-320); // jump up
         this.anims.play('jump', true);
       }
+      
+      return musicParams
     }
 }

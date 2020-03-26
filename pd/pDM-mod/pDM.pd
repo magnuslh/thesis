@@ -1,8 +1,8 @@
-#N canvas -1 296 690 372 12;
+#N canvas 390 300 690 395 12;
 #X obj -28 32 cnv 15 230 145 empty empty Control 7 10 0 18 -228856
 -4160 0;
 #X obj -20 149 nbx 5 14 -1e+37 1e+37 0 0 empty empty Bar 10 -6 0 10
--228856 -1 -1 96 256 0;
+-228856 -1 -1 36 256 0;
 #X obj -20 74 bng 40 250 50 0 empty pdm_play Play 0 -6 0 12 -24198
 -1 -1;
 #X obj 31 74 bng 40 250 50 0 empty pdm_stop Stop 0 -6 0 12 -258699
@@ -1326,7 +1326,7 @@ Roland-PMA5 Technics-SX-P30;
 #X restore -20 118 pd pdm_expressive_sequencer;
 #X obj 210 33 cnv 15 225 145 empty empty User_interfaces 10 10 0 18
 -228856 -4160 0;
-#N canvas 379 121 529 666 all_performance_rules 1;
+#N canvas 434 90 529 689 all_performance_rules 0;
 #X obj 49 73 hsl 128 20 -5 5 0 0 dmk1 dmk1 empty -2 -6 0 8 -225271
 -1 -1 6350 1;
 #X obj -2 75 nbx 4 20 -1e+37 1e+37 0 0 dmk1 dmk1 empty 0 -6 0 10 -225271
@@ -1339,21 +1339,21 @@ Roland-PMA5 Technics-SX-P30;
 #X text 459 50 k art;
 #X text 414 51 k SL;
 #X obj 49 95 hsl 128 20 -5 5 0 0 dmk2 dmk2 empty -2 -6 0 8 -225271
--1 -1 8102 1;
+-1 -1 7935 1;
 #X obj -2 95 nbx 4 20 -1e+37 1e+37 0 0 dmk2 dmk2 empty 0 -6 0 10 -225271
--1 -1 1.37988 256 0;
+-1 -1 1.24805 256 0;
 #X obj 410 95 nbx 4 20 -1e+37 1e+37 0 0 dms2 dmk2 empty 0 -6 0 10 -262131
--1 -1 1.37988 256 0;
+-1 -1 1.24805 256 0;
 #X obj 362 95 nbx 4 20 -1e+37 1e+37 0 0 dmt2 dmk2 empty 0 -6 0 10 -261681
--1 -1 1.37988 256 0;
+-1 -1 1.24805 256 0;
 #X obj 49 115 hsl 128 20 -5 5 0 0 dmk3 dmk3 empty -2 -6 0 8 -225271
--1 -1 8102 1;
+-1 -1 7935 1;
 #X obj -2 115 nbx 4 20 -1e+37 1e+37 0 0 dmk3 dmk3 empty 0 -6 0 10 -225271
--1 -1 1.37988 256 0;
+-1 -1 1.24805 256 0;
 #X obj 410 115 nbx 4 20 -1e+37 1e+37 0 0 dms3 dmk3 empty 0 -6 0 10
--262131 -1 -1 1.37988 256 0;
+-262131 -1 -1 1.24805 256 0;
 #X obj 362 115 nbx 4 20 -1e+37 1e+37 0 0 dmt3 dmk3 empty 0 -6 0 10
--261681 -1 -1 1.37988 256 0;
+-261681 -1 -1 1.24805 256 0;
 #X obj 49 135 hsl 128 20 -5 5 0 0 dmk4 dmk4 empty -2 -6 0 8 -225271
 -1 -1 6350 1;
 #X obj -2 135 nbx 4 20 -1e+37 1e+37 0 0 dmk4 dmk4 empty 0 -6 0 10 -225271
@@ -1385,29 +1385,29 @@ Roland-PMA5 Technics-SX-P30;
 #X obj 362 195 nbx 4 20 -1e+37 1e+37 0 0 dmt7 dmk7 empty 0 -6 0 10
 -261681 -1 -1 0 256 0;
 #X obj 460 236 nbx 4 20 -1e+37 1e+37 0 0 dma9 dmk9 empty 0 -6 0 10
--228992 -1 -1 1.34805 256 0;
+-228992 -1 -1 1.49766 256 0;
 #X obj 49 215 hsl 128 20 -5 5 0 0 dmk8 dmk8 empty -2 -6 0 8 -225271
--1 -1 6984 1;
+-1 -1 6983 1;
 #X obj -2 215 nbx 4 20 -1e+37 1e+37 0 0 dmk8 dmk8 empty 0 -6 0 10 -225271
--1 -1 0.499023 256 0;
+-1 -1 0.498047 256 0;
 #X obj 410 295 nbx 4 20 -1e+37 1e+37 0 0 dms12 dmk12 empty 0 -6 0 10
 -262131 -1 -1 1 256 0;
 #X obj 49 235 hsl 128 20 -5 5 0 0 dmk9 dmk9 empty -2 -6 0 8 -225271
--1 -1 8062 1;
+-1 -1 8252 1;
 #X obj -2 235 nbx 4 20 -1e+37 1e+37 0 0 dmk9 dmk9 empty 0 -6 0 10 -225271
--1 -1 1.34805 256 0;
+-1 -1 1.49766 256 0;
 #X obj 410 315 nbx 4 20 -1e+37 1e+37 0 0 dms13 dmk13 empty 0 -6 0 10
--262131 -1 -1 0.365234 256 0;
+-262131 -1 -1 0.746094 256 0;
 #X obj 362 235 nbx 4 20 -1e+37 1e+37 0 0 dmt9 dmk9 empty 0 -6 0 10
--261681 -1 -1 1.34805 256 0;
+-261681 -1 -1 1.49766 256 0;
 #X obj 50 503 hsl 128 20 0.5 2 0 0 dmtsc dmtsc empty -2 -6 0 8 -261681
--1 -1 3167 1;
+-1 -1 4015 1;
 #X obj -1 503 nbx 4 20 -1e+37 1e+37 0 0 dmtsc dmtsc empty 0 -6 0 10
--261681 -1 -1 0.874023 256 0;
+-261681 -1 -1 0.974219 256 0;
 #X obj 50 523 hsl 128 20 -10 10 0 0 dmssc dmssc empty -2 -6 0 8 -262131
--1 -1 4915 1;
+-1 -1 5941 1;
 #X obj -1 523 nbx 4 20 -1e+37 1e+37 0 0 dmssc dmssc empty 0 -6 0 10
--262131 -1 -1 -2.25977 256 0;
+-262131 -1 -1 -0.643362 256 0;
 #X text 192 503 Tempo;
 #X text 192 523 Sound level;
 #X text 33 51 k values;
@@ -1452,7 +1452,7 @@ dmk6 0 \; dmk7 0 \; dmk8 0 \; dmk9 1.2 \; dmk10 1 \; dmk11 1 \; dmk12
 #X obj 410 255 nbx 4 20 -1e+37 1e+37 0 0 dms10 dmk10 empty 0 -6 0 10
 -262131 -1 -1 1 256 0;
 #X obj 362 215 nbx 4 20 -1e+37 1e+37 0 0 dmt8 dmk8 empty 0 -6 0 10
--261681 -1 -1 0.499023 256 0;
+-261681 -1 -1 0.498047 256 0;
 #X obj 49 275 hsl 128 20 -5 5 0 0 dmk11 dmk11 empty -2 -6 0 8 -225271
 -1 -1 7620 1;
 #X obj -2 275 nbx 4 20 -1e+37 1e+37 0 0 dmk11 dmk11 empty 0 -6 0 10
@@ -1468,11 +1468,11 @@ dmk6 0 \; dmk7 0 \; dmk8 0 \; dmk9 1.2 \; dmk10 1 \; dmk11 1 \; dmk12
 #X obj 362 295 nbx 4 20 -1e+37 1e+37 0 0 dmt12 dmk12 empty 0 -6 0 10
 -261681 -1 -1 1 256 0;
 #X obj 49 315 hsl 128 20 -5 5 0 0 dmk13 dmk13 empty -2 -6 0 8 -225271
--1 -1 6814 1;
+-1 -1 7298 1;
 #X obj -2 315 nbx 4 20 -1e+37 1e+37 0 0 dmk13 dmk13 empty 0 -6 0 10
--225271 -1 -1 0.365234 256 0;
+-225271 -1 -1 0.746094 256 0;
 #X obj 362 315 nbx 4 20 -1e+37 1e+37 0 0 dmt13 dmk13 empty 0 -6 0 10
--261681 -1 -1 0.365234 256 0;
+-261681 -1 -1 0.746094 256 0;
 #X obj 49 335 hsl 128 20 -5 5 0 0 dmk14 dmk14 empty -2 -6 0 8 -225271
 -1 -1 6350 1;
 #X obj -2 335 nbx 4 20 -1e+37 1e+37 0 0 dmk14 dmk14 empty 0 -6 0 10
@@ -1482,11 +1482,11 @@ dmk6 0 \; dmk7 0 \; dmk8 0 \; dmk9 1.2 \; dmk10 1 \; dmk11 1 \; dmk12
 #X obj -2 355 nbx 4 20 -1e+37 1e+37 0 0 dmk15 dmk15 empty 0 -6 0 10
 -225271 -1 -1 1 256 0;
 #X obj 49 375 hsl 128 20 -5 5 0 0 dmk16 dmk16 empty -2 -6 0 8 -225271
--1 -1 7935 1;
+-1 -1 8252 1;
 #X obj -2 375 nbx 4 20 -1e+37 1e+37 0 0 dmk16 dmk16 empty 0 -6 0 10
--225271 -1 -1 1.24785 256 0;
+-225271 -1 -1 1.49727 256 0;
 #X obj 459 375 nbx 4 20 -1e+37 1e+37 0 0 dma16 dmk16 empty 0 -6 0 10
--228992 -1 -1 1.24785 256 0;
+-228992 -1 -1 1.49727 256 0;
 #X obj 49 395 hsl 128 20 -5 5 0 0 dmk17 dmk17 empty -2 -6 0 8 -225271
 -1 -1 7620 1;
 #X obj -2 395 nbx 4 20 -1e+37 1e+37 0 0 dmk17 dmk17 empty 0 -6 0 10
@@ -1502,13 +1502,13 @@ dmk6 0 \; dmk7 0 \; dmk8 0 \; dmk9 1.2 \; dmk10 1 \; dmk11 1 \; dmk12
 #X obj 459 415 nbx 4 20 -1e+37 1e+37 0 0 dma18 dmk18 empty 0 -6 0 10
 -228992 -1 -1 1 256 0;
 #X obj 49 435 hsl 128 20 -5 5 0 0 dmk19 dmk19 empty -2 -6 0 8 -225271
--1 -1 7802 1;
+-1 -1 8371 1;
 #X obj -2 435 nbx 4 20 -1e+37 1e+37 0 0 dmk19 dmk19 empty 0 -6 0 10
--225271 -1 -1 1.14297 256 0;
+-225271 -1 -1 1.59141 256 0;
 #X obj 362 355 nbx 4 20 -1e+37 1e+37 0 0 dmt15 dmk15 empty 0 -6 0 10
 -261681 -1 -1 1 256 0;
 #X obj 459 435 nbx 4 20 -1e+37 1e+37 0 0 dma19 dmk19 empty 0 -6 0 10
--228992 -1 -1 1.14297 256 0;
+-228992 -1 -1 1.59141 256 0;
 #X obj 49 455 hsl 128 20 -5 5 0 0 dmk20 dmk20 empty -2 -6 0 8 -225271
 -1 -1 6350 1;
 #X obj -2 455 nbx 4 20 -1e+37 1e+37 0 0 dmk20 dmk20 empty 0 -6 0 10
@@ -2942,10 +2942,10 @@ in the program Director Musices. More info in the readme file. (C)
 #X text 14 111 pDM is licensed under the terms of the GNU General Public
 License (GNU GPL) \, see the accompaning file copying.txt;
 #X restore 284 3 pd pdm_readme;
-#N canvas 337 128 804 652 2D_activity_valence_space 1;
+#N canvas 550 60 804 675 2D_activity_valence_space 0;
 #X obj 1 -30 cnv 15 430 510 empty empty empty 20 12 0 14 -233017 -66577
 0;
-#X obj 11 -3 grid grid1 400 -1 1 400 -1 1 0 0.005 0.005 1 1 204 374
+#X obj 11 -3 grid grid1 400 -1 1 400 -1 1 0 0.005 0.005 1 1 23 224
 ;
 #X obj 12 403 s dmex1;
 #X obj 356 402 s dmey1;
@@ -3295,13 +3295,13 @@ $f1 + $f6 + $f5 + $f4 + $f3);
 #X restore 290 426 pd act_val_interp;
 #X text 94 405 Control scaling;
 #X obj 106 428 hsl 128 20 0 2 0 0 dmtsc1 dmtsc1 empty -2 -6 0 8 -261681
--1 -1 6350 1;
+-1 -1 12700 1;
 #X obj 56 427 nbx 4 20 -1e+37 1e+37 0 0 dmtsc1 dmtsc1 empty 0 -6 0
-10 -261681 -1 -1 1 256 0;
+10 -261681 -1 -1 2 256 0;
 #X obj 106 450 hsl 128 20 0 2 0 0 dmssc1 dmssc1 empty -2 -6 0 8 -262131
--1 -1 6350 1;
+-1 -1 10150 1;
 #X obj 55 450 nbx 4 20 -1e+37 1e+37 0 0 dmssc1 dmssc1 empty 0 -6 0
-10 -262131 -1 -1 1 256 0;
+10 -262131 -1 -1 1.59843 256 0;
 #X text 241 428 Tempo;
 #X text 239 450 Sound level;
 #X floatatom 462 32 5 0 0 0 - - -, f 5;
