@@ -31,8 +31,8 @@ export default class PlayScene extends Phaser.Scene {
 	this.enemy = new Enemy(this, 600, 505, 'wizard-idle');
 
 	this.doors = this.add.group();
-	let d1= new Door(this, 650, 110, "door")
-	let d2= new Door(this, 750, 525, "door")
+	let d1= new Door(this, 630, 89, "door")
+	let d2= new Door(this, 750, 505, "door")
 	
 	d1.targetDoor = d2;
 	d2.targetDoor = d1; 
@@ -83,7 +83,7 @@ export default class PlayScene extends Phaser.Scene {
 
 	enterDoor(player, door){
 		
-		let xOffset = door.spawn=="left"?-40:40
+		let xOffset = door.spawn=="left"?-50:50
 		
 		
 		this.player.body.setAccelerationX(0);
