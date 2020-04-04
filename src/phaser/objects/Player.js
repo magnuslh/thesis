@@ -17,7 +17,7 @@ export default class Player extends Phaser.GameObjects.Sprite{
         this.body.setCollideWorldBounds(true);
         
         this.scale = 1.5; 
-        this.health = 3;
+        this.health = 2;
         this.hurtable = true; 
         this.landed = false; 
         this.state = 'idle';
@@ -29,6 +29,8 @@ export default class Player extends Phaser.GameObjects.Sprite{
     update(keys, musicParams){
 
         musicParams.velocity = 0.2*this.health; 
+        
+       
 
         if(this.sword && this.state !== "attack"){
             

@@ -11,13 +11,9 @@ export default class Sword extends Phaser.GameObjects.Sprite {
 				this.body.allowGravity = false; 
         this.texture = texture
 				if(scene.enemy){
-					scene.physics.add.overlap(this, scene.enemy, this.hitEnemy, null, this);
+					scene.physics.add.overlap(this, scene.enemy, this.scene.hitEnemy, null, this);
 				}
 		}
 		
-		
-	hitEnemy(){
-		
-		this.scene.enemy.die(); 
-	}
+	
 }

@@ -70,6 +70,7 @@ export default class EmotionController {
             this.valence = 0; 
             this.velocity = 0.5; 
             this.sendRate = 0.1;
+           
             this.delay = 0;
             //Initiate playback 
             this.sendPause();
@@ -77,6 +78,8 @@ export default class EmotionController {
             this.sendEnergy();
             this.sendPlay(); 
             this.startSend(); 
+
+            this.effect = 2; // full effect
       
          
 					
@@ -129,7 +132,7 @@ export default class EmotionController {
         this.input.addListener('noteon', "all", (e) => {
             //this.nextNote = e; 
             //console.log("Received 'noteon' message (" + e.note.name + e.note.octave + ").");
-            this.sampler.triggerAttack(e.note.name + e.note.octave, "+" + this.delay, e.velocity*this.velocity)
+            this.sampler.triggerAttack(e.note.name + e.note.octave, "+" + this.delay,  e.velocity*this.velocity)
             
         });
         this.input.addListener('noteoff', "all", (e) => {
@@ -175,7 +178,7 @@ export default class EmotionController {
    
  
     setEnergy(amount){
-       
+        amount = amount * this.effect; 
         if (amount > 1){
             amount = 1; 
         }
@@ -207,7 +210,7 @@ export default class EmotionController {
         
     }
     setValence(amount){
-        
+        amount = amount*this.effect; 
         if (amount > 1){
             amount = 1; 
         }
@@ -222,12 +225,15 @@ export default class EmotionController {
        
     }
     setVelocity(amount){
+        let variance = this.effect / 3
+        let max = 0.5 + variance 
+        let min = 0.5 - variance
         
-        if (amount > 0.8){
-            amount = 0.8; 
+        if (amount > max){
+            amount = max; 
         }
-        else if (amount < 0.1){
-            amount = 0.1; 
+        else if (amount < min){
+            amount = min; 
         }
         if(this.velocity ==  amount){
             return 

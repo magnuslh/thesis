@@ -28,24 +28,24 @@ export default class PlayScene extends Phaser.Scene {
 
     this.player = new Player(this, 100,200, 'player');
     
-	this.enemy = new Enemy(this, 600, 505, 'wizard-idle');
+	
 
 	this.doors = this.add.group();
-	let d1= new Door(this, 630, 89, "door")
+	let d1= new Door(this, 750, 89, "door")
 	let d2= new Door(this, 750, 505, "door")
 	
 	d1.targetDoor = d2;
 	d2.targetDoor = d1; 
 	d1.spawn = "left";
-	d2.spawn = "right"
+	d2.spawn = "left"
 	this.doors.addMultiple([d1, d2]);
-	this.collectible = new Collectible(this, 750, 90, "heart");
+	this.collectible = new Collectible(this, 630, 90, "heart");
 
     this.physics.add.collider(this.player, this.layer);
-	this.physics.add.collider(this.enemy, this.layer);
+	
 	this.physics.add.collider(this.collectible, this.layer);
 
-	this.physics.add.overlap(this.player, this.enemy, this.touchEnemy, null, this);
+	
 	this.physics.add.overlap(this.player, this.doors, this.enterDoor, null, this);
 	this.physics.add.overlap(this.player, this.collectible, this.collect, null, this);
 		
@@ -77,8 +77,17 @@ export default class PlayScene extends Phaser.Scene {
 	
 	collect(){
 		this.player.health += 1; 
-		this.collectible.destroy()
+		this.collectible.destroy() //setActive(false).setVisible(false).body.enable = false;
+		// setTimeout(() => {
+		// 	this.collectible.setActive(true).setVisible(true).body.enable = true;
+		// }, 10000)
 		this.updateLives(); 
+		if(!this.enemy){
+			this.enemy = new Enemy(this, 600, 505, 'wizard-idle');
+			this.physics.add.collider(this.enemy, this.layer);
+			this.physics.add.overlap(this.player, this.enemy, this.touchEnemy, null, this);
+			
+		}
 	}
 
 	enterDoor(player, door){
@@ -98,6 +107,7 @@ export default class PlayScene extends Phaser.Scene {
 		this.pause = true; 
 		this.musicParams.velocity = 0.1
 		this.musicParams.energy = -1;
+		
 		setTimeout(()=>{
 			this.exitDoor(door.targetDoor.x + xOffset, door.targetDoor.y)
 			// clearInterval(fadeOutInterval)
@@ -116,6 +126,8 @@ export default class PlayScene extends Phaser.Scene {
 		
 		this.player.x = x 
 		this.player.y = y
+		this.player.flipX = true; 
+		
 	}
 	updateLives(){
 		this.lives.clear(true,true)
@@ -141,9 +153,19 @@ export default class PlayScene extends Phaser.Scene {
       this.player.hurtable = false; 
       
       if(this.player.health <= 0){
-          this.physics.pause(); 
-          
-          this.gameOver = true;
+			this.physics.pause(); 
+			
+			this.gameOver = true;
+			//this.cameras.main.fade(500, 0,0,0)
+			
+			this.player.anims.play("die", true)
+		
+			this.add.text(0 , 220 , 'Game Over', { fontFamily: 'Arial', align: "center", fontSize: 64, color: '#ff0000', fixedWidth: 800 });
+			
+			this.musicParams.velocity = 0.5
+			this.musicParams.valence = 0.8
+			this.musicParams.energy = -1;
+		  
       }
 
       else {
@@ -157,14 +179,24 @@ export default class PlayScene extends Phaser.Scene {
      
       
   }
+  	
+	hitEnemy(){
+		
+		this.enemy.die(); 
+		setTimeout(()=> this.enemy.spawn(), 10000)
+	}
 
 
   update() {
-	if(!this.pause){
+
+	if(!this.pause && !this.gameOver){
 		this.musicParams = this.player.update(this.keys, this.musicParams)
-		if(this.enemy.active && this.enemy.state !== "dead"){
-			this.musicParams = this.enemy.update(this.musicParams); 
+		if(this.enemy){
+			if(this.enemy.active && this.enemy.state !== "dead"){
+				this.musicParams = this.enemy.update(this.musicParams); 
+			}
 		}
+		
 	}
 	
     
@@ -173,5 +205,10 @@ export default class PlayScene extends Phaser.Scene {
 	this.musicController.setVelocity(this.musicParams.velocity); 
    
   }
+  	render() {
+
+		this.debug.text("Arrows to move. Click to fade", 32, 32);
+
+	}
 
 }

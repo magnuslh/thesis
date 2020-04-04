@@ -16,6 +16,7 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
 		this.body.setDragX(60) 
 		this.body.setMaxVelocity(30, 0);
 		this.state = "idle"
+		
     }
 
     update(musicParams){
@@ -67,6 +68,12 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
 		this.body.checkCollision.none = true; 
 		this.body.setAccelerationX(0); 
 		this.anims.play("wizard-death", true)
+		
+	}
+	spawn(){
+		this.state = "idle";
+		this.body.checkCollision.none = false; 
+		this.body.setAccelerationX(0); 
 		
 	}
 }

@@ -83,6 +83,12 @@ export default class BootScene extends Scene {
       frameRate: 10,
       repeat: -1
     });
+    this.anims.create({
+      key: 'die',
+      frames: this.anims.generateFrameNumbers('player', { start: 65, end: 68 }),
+      frameRate: 10,
+      repeat: 0
+    });
    
      this.anims.create({
       key: 'jump',
