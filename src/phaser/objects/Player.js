@@ -27,7 +27,7 @@ export default class Player extends Phaser.GameObjects.Sprite{
 
 
     update(keys, musicParams){
-
+        
         musicParams.velocity = 0.2*this.health; 
         
        

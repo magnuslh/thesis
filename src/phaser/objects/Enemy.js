@@ -37,7 +37,7 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
 			this.anims.play("wizard-fly", true)
 		}
 		if(this.state !== "die" || this.state !== "dead"){
-			if(this.player.y > 500 && this.player.body.onFloor() && this.player.state != 'crouch'){
+			if(this.player.y > 380  && this.player.state != 'crouch'){
 				this.state = "chase"
 				let distance = 100/Math.abs(this.player.x - this.x);
 
