@@ -80,7 +80,7 @@ export default class Player extends Phaser.GameObjects.Sprite{
         
        
         
-        musicParams.valence= (this.health  -2) / 2; 
+        musicParams.valence= (this.health  -2) * 0.8; 
         
       
         

@@ -153,19 +153,19 @@ export default class PlayScene extends Phaser.Scene {
       this.player.hurtable = false; 
       
       if(this.player.health <= 0){
-			this.physics.pause(); 
+				this.physics.pause(); 
+				
+				this.gameOver = true;
+				//this.cameras.main.fade(500, 0,0,0)
+				
+				this.player.anims.play("die", true)
 			
-			this.gameOver = true;
-			//this.cameras.main.fade(500, 0,0,0)
-			
-			this.player.anims.play("die", true)
-		
-			this.add.text(0 , 220 , 'Game Over', { fontFamily: 'Arial', align: "center", fontSize: 64, color: '#ff0000', fixedWidth: 800 });
-			
-			this.musicParams.velocity = 0.5
-			this.musicParams.valence = 0.8
-			this.musicParams.energy = -1;
-		  
+				this.add.text(0 , 220 , 'Game Over', { fontFamily: 'Arial', align: "center", fontSize: 64, color: '#ff0000', fixedWidth: 800 });
+				
+				this.musicParams.velocity = 0.5
+				this.musicParams.valence = -0.8
+				this.musicParams.energy = -0.8;
+				
       }
 
       else {
