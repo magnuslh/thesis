@@ -10,15 +10,15 @@
   "dependencies": {
     "core-js": "^3.6.4",
     "osc": "^2.4.0",
-    "phaser": "^3.22.0",
+    "phaser": "^3.55.2",
     "tone": "^13.8.25",
     "vue": "^2.6.11",
     "webmidi": "^2.5.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.2.0",
-    "@vue/cli-plugin-eslint": "^4.2.0",
-    "@vue/cli-service": "^4.2.0",
+    "@vue/cli-plugin-babel": "^5.0.8",
+    "@vue/cli-plugin-eslint": "^5.0.8",
+    "@vue/cli-service": "^5.0.8",
     "babel-eslint": "^10.0.3",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.1.2",
